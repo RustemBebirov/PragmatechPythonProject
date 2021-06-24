@@ -10,4 +10,5 @@ urlpatterns = [
     path('shop-single/', views.shop_single, name='shop-single'),
     path('gallery/', views.gallery, name='gallery'),
     path('contact/', views.contact, name='contact'),
+    path('homewrok/', views.homework, name=''),
 ]

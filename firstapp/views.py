@@ -27,5 +27,6 @@ def contact(request):
     return render(request, 'contact.html')
 
 
-
+def homework(request):
+    return render(request, 'homework.html')
 
