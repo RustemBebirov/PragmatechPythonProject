@@ -22,3 +22,6 @@ urlpatterns = [
     path('', include('firstapp.urls')),
     path('admin/', admin.site.urls),
 ]
+
+admin.site.index_title ='Edubin'
+admin.site.site_header="Edubin"

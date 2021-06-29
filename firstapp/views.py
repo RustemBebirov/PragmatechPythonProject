@@ -55,7 +55,4 @@ def faq(request):
 
 
 
-#homework 
-def homework(request):
-    return render(request, 'homework.html')
 

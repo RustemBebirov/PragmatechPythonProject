@@ -1,3 +1,4 @@
+from firstapp import admin
 from django.urls import path
 from . import views
 
@@ -17,7 +18,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('ploicy/', views.policy, name='policy'),
     path('faq/', views.faq, name='faq'),
-    path('homewrok/', views.homework, name=''),
     path('events/', views.events, name='events'),
     path('events-single/', views.events_single, name='events-single'),
 ]

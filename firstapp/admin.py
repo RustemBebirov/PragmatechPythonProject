@@ -1,5 +1,14 @@
 from django.contrib import admin
-from .models import Blog
+from .models import Blog, Tag, Blog_category, Blog_comment, Contact
 
 # Register your models here.
-admin.site.register(Blog)
+# blog model registration
+@admin.register(Blog)
+class BlogAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("title",)}
+admin.site.register(Tag)
+admin.site.register(Blog_comment)
+admin.site.register(Blog_category)
+
+#contact model
+admin.site.register(Contact)
