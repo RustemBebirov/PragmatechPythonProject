@@ -45,7 +45,7 @@
                             <div class="login-register">
                                 <ul>
                                     <li><a href="">Login</a></li>
-                                    <li><a href="{% url 'register' %}">Register</a></li>
+                                    <li><a href="{% url 'firstapp:register' %}">Register</a></li>
                                 </ul>
                             </div>
                         </div> <!-- header right -->
@@ -59,7 +59,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg">
-                            <a class="navbar-brand" href="{% url 'index' %}">
+                            <a class="navbar-brand" href="{% url 'firstapp:index' %}">
                                 <img src="{% static 'assets/images/logo.png' %}" alt="Logo">
                             </a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,51 +76,51 @@
                                     <li class="nav-item">
                                         <a href="#">Pages</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{% url 'about' %}">About Us</a></li>
-                                            <li><a href="{% url 'gallery' %}">Gallery</a></li>
-                                            <li><a href="{% url 'policy' %}">Privacy Policy</a></li>
-                                            <li><a href="{% url 'faq' %}">FAQ</a></li>
+                                            <li><a href="{% url 'firstapp:about' %}">About Us</a></li>
+                                            <li><a href="{% url 'firstapp:gallery' %}">Gallery</a></li>
+                                            <li><a href="{% url 'firstapp:policy' %}">Privacy Policy</a></li>
+                                            <li><a href="{% url 'firstapp:faq' %}">FAQ</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{% url 'courses' %}">Courses</a>
+                                        <a href="{% url 'firstapp:courses' %}">Courses</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{% url 'courses' %}">Courses</a></li>
-                                            <li><a href="{% url 'courses-single' %}">Course Single</a></li>
+                                            <li><a href="{% url 'firstapp:courses' %}">Courses</a></li>
+                                            <li><a href="{% url 'firstapp:courses-single' %}">Course Single</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{% url 'events' %}">Events</a>
+                                        <a href="{% url 'firstapp:events' %}">Events</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{% url 'events' %}">Events List</a></li>
-                                            <li><a href="{% url 'events-single' %}">Event Single</a></li>
+                                            <li><a href="{% url 'firstapp:events' %}">Events List</a></li>
+                                            <li><a href="{% url 'firstapp:events-single' %}">Event Single</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{% url 'teachers' %}">Teachers</a>
+                                        <a href="{% url 'firstapp:teachers' %}">Teachers</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{% url 'teachers' %}">teachers</a></li>
-                                            <li><a href="{% url 'teachers-single' %}">teacher Single</a></li>
+                                            <li><a href="{% url 'firstapp:teachers' %}">teachers</a></li>
+                                            <li><a href="{% url 'firstapp:teachers-single' %}">teacher Single</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{% url 'blog' %}">Blog</a>
+                                        <a href="{% url 'firstapp:blog' %}">Blog</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{% url 'blog' %}">Blog</a></li>
-                                            <li><a href="{% url 'blog-single' %}">Blog Single</a></li>
+                                            <li><a href="{% url 'firstapp:blog' %}">Blog</a></li>
+                                            <li><a href="{% url 'firstapp:blog-single' %}">Blog Single</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{% url 'shop' %}">Shop</a>
+                                        <a href="{% url 'firstapp:shop' %}">Shop</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{% url 'shop' %}">Shop</a></li>
-                                            <li><a href="{% url 'shop-single' %}">Shop Single</a></li>
+                                            <li><a href="{% url 'firstapp:shop' %}">Shop</a></li>
+                                            <li><a href="{% url 'firstapp:shop-single' %}">Shop Single</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{% url 'contact' %}">Contact</a>
+                                        <a href="{% url 'firstapp:contact' %}">Contact</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                                            <li><a href="{% url 'firstapp:contact' %}">Contact Us</a></li>
                                         </ul>
                                     </li>
                                 </ul>
