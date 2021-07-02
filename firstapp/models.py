@@ -9,10 +9,12 @@ User = get_user_model()
 
 # Create your models here.
 
+
+
 # Blog model start
 
 class Tag(models.Model):
-    """this table show blog tag information"""
+    """this table show  tag information"""
 
     # information's
     title = models.CharField('Title',max_length=127,)
@@ -107,7 +109,165 @@ class Blog_comment(models.Model):
     def __str__(self) -> str:
         return f'{self.author.get_full_name()}'
 
-# Blog model end     
+# Blog model end
+
+
+# Order model start
+class Order(models.Model):
+    """this table show order information"""
+
+    # information's
+    title = models.CharField('Title',max_length=127)
+    price = models.CharField('Price',max_length=127)
+    short_description = models.CharField('Short Description',max_length=127)
+    description = models.TextField('Description')
+    seller = models.CharField('Seller',max_length=127)
+    image1 = models.ImageField("Image", upload_to='shop_images')
+    image2 = models.ImageField("Image", upload_to='shop_images')
+    image3 = models.ImageField("Image", upload_to='shop_images')
+    image4 = models.ImageField("Image", upload_to='shop_images')
+    image5 = models.ImageField("Image", upload_to='shop_images')
+
+    # moderation's
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
+    is_published = models.BooleanField('Is published', default=True)
+
+    class Meta:
+        verbose_name = 'Order'
+        verbose_name_plural = 'Orders'
+        ordering = ('-created_at',)
+    
+    def __str__(self) -> str:
+        return self.title
+
+class Order_Comment(models.Model):
+
+    # relation's
+    author = models.ForeignKey(User, verbose_name='Author', on_delete=models.CASCADE, db_index=True, related_name='comments')
+    order = models.ForeignKey('Order', verbose_name='Order', related_name='orders',db_index=True, on_delete=CASCADE)
+    
+    
+    """this table show Order comment information"""
+    full_name = models.CharField('FullName',max_length=127)
+    email = models.EmailField("E-mail",max_length=127)
+    rating = models.IntegerField("Rating")
+    comment = models.TextField('Comment')
+
+    # moderation's
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
+    is_published = models.BooleanField('Is published', default=True)
+
+    class Meta:
+        verbose_name = 'Order comment'
+        verbose_name_plural = 'Order comments'
+        ordering = ('-created_at',)
+    
+    def __str__(self) -> str:
+        return self.full_name
+
+# ORder model end
+
+# Teacher model start
+class Teacher(models.Model):
+    # relation's
+    
+    """this table show Order comment information"""
+    full_name = models.CharField("FullName",max_length=127)
+    job = models.CharField('Job',max_length=127)
+    short_description = models.CharField("Short description",max_length=127)
+    about = models.CharField("About",max_length=127)
+    acchivments = models.CharField("Achivments",max_length=127)
+    objective = models.CharField("My Objective" ,max_length=127)
+
+    # moderation's
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
+    is_published = models.BooleanField('Is published', default=True)
+
+    class Meta:
+        verbose_name = 'Teacher'
+        verbose_name_plural = 'Teachers'
+        ordering = ('-created_at',)
+    
+    def __str__(self) -> str:
+        return self.full_name
+    
+class Teacher_Comment(models.Model):
+    # relation's
+    author = models.ForeignKey(User, verbose_name='Author', on_delete=models.CASCADE, db_index=True, related_name='comments')
+    teacher = models.ForeignKey('Teacher', verbose_name='Teacher', related_name='teachers',db_index=True, on_delete=CASCADE)
+    
+    
+    """this table show Order comment information"""
+    full_name = models.CharField('FullName',max_length=127)
+    email = models.EmailField("E-mail",max_length=127)
+    rating = models.IntegerField("Rating")
+    comment = models.TextField('Comment')
+
+    # moderation's
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
+    is_published = models.BooleanField('Is published', default=True)
+
+    class Meta:
+        verbose_name = 'Teacher Comment'
+        verbose_name_plural = 'Teacher Commnets'
+        ordering = ('-created_at',)
+    
+    def __str__(self) -> str:
+        return self.full_name
+# Teacher model end
+
+# Course model start
+class Course(models.Model):
+    # relation's
+    teacher = models.ForeignKey('Teacher', verbose_name='Teacher', related_name='teachers',db_index=True, on_delete=CASCADE)
+    category = models.ForeignKey('Course_category', on_delete=models.CASCADE, related_name='courses', db_index=True)
+    
+    """this table show Order comment information"""
+    title = models.CharField('FullName',max_length=127)
+    rating = models.IntegerField("Rating")
+    price = models.CharField("Price", max_length=127)
+    
+
+    # moderation's
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
+    is_published = models.BooleanField('Is published', default=True)
+
+    class Meta:
+        verbose_name = 'Teacher Comment'
+        verbose_name_plural = 'Teacher Commnets'
+        ordering = ('-created_at',)
+    
+    def __str__(self) -> str:
+        return self.full_name
+
+    class Course_category(models.Model):
+        """this table show Course category information"""
+
+        # information's
+        title = models.CharField('Title',max_length=127,)
+
+        # moderation's
+        created_at = models.DateField(auto_now_add=True)
+        updated_at = models.DateField(auto_now=True)
+        is_published = models.BooleanField('Is published', default=True)
+
+        class Meta:
+            verbose_name = 'Category'
+            verbose_name_plural = 'Categories'
+            ordering = ('title','-created_at')
+            
+
+        def __str__(self) -> str:
+            return self.title
+
+
+# Course model end
+
 
 class Contact(models.Model):
     """this table show category information"""
