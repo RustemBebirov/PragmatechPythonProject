@@ -1,0 +1,54 @@
+>>> from firstapp.models import *
+>>> cat1 = Blog_category(title='travel')
+>>> cat1.save()
+>>> cat2 = Blog_category.objects.create(title='food')
+>>> tag1 = Tag(title='#travel')
+>>> blog1 = Blog(category=cat1,title='Newyork',short_description='salam',description='is a beatiful city',image='newyork.png')                   
+>>> blog1.save()
+>>> Blog.objects.all().first
+<bound method QuerySet.first of <QuerySet [<Blog: New York>, <Blog: Newyork>]>>
+>>> blog1.category  
+<Blog_category: travel>
+>>> blog1.tag
+<django.db.models.fields.related_descriptors.create_forward_many_to_many_manager.<locals>.ManyRelatedManager object at 0x0000020A04E52820>
+>>> blog1.tag.add(tag1)
+>>> blog1.tag
+<django.db.models.fields.related_descriptors.create_forward_many_to_many_manager.<locals>.ManyRelatedManager object at 0x0000020A04E52070>
+>>> blog1.tag.all()
+<QuerySet [<Tag: #travel>]>
+>>> blog1.tag.all().first
+<bound method QuerySet.first of <QuerySet [<Tag: #travel>]>>
+>>> blog1.tag.add('#money')
+>>> cat1.blogs
+<django.db.models.fields.related_descriptors.create_reverse_many_to_one_manager.<locals>.RelatedManager object at 0x0000020A04E520A0>
+>>> cat1.blogs.all()
+<QuerySet [<Blog: Newyork>]>
+>>>
+>>> Blog.objects.order_by('id')        
+<QuerySet [<Blog: New York>, <Blog: Newyork>]>
+>>> Blog.objects.order_by('created_at')
+<QuerySet [<Blog: New York>, <Blog: Newyork>]>
+>>> Blog.objects.order_by('-created_at')
+<QuerySet [<Blog: New York>, <Blog: Newyork>]>
+>>>
+Blog.objects.values()
+<QuerySet [{'id': 1, 'category_id': 1, 'title': 'New York', 'short_description': 'Camping spots were sparse at 3 Forks Park', 'description': 'asddddddddddddddddddddd', 'image': 'blog_images/bp-1.jpg', 'slug': 'new-york', 'created_at': datetime.date(2021, 7, 2), 'updated_at': datetime.date(2021, 7, 2), 'is_published': True}, {'id': 2, 'category_id': 2, 'title': 'Newyork', 'short_description': 'salam', 'description': 'is a beatiful city', 'image': 
+'newyork.png', 'slug': '', 'created_at': datetime.date(2021, 7, 2), 'updated_at': datetime.date(2021, 7, 2), 'is_published': True}]>
+ Blog.objects.values('id','title')
+<QuerySet [{'id': 1, 'title': 'New York'}, {'id': 2, 'title': 'Newyork'}]>
+Blog.objects.values_list('id').order_by('id')
+<QuerySet [(1,), (2,)]>
+>>> Blog.objects.dates('created_at','year')
+<QuerySet [datetime.date(2021, 1, 1)]>
+>>> Blog.objects.dates('created_at','day')  
+<QuerySet [datetime.date(2021, 7, 2)]>
+>>> Blog.objects.dates('created_at','month') 
+<QuerySet [datetime.date(2021, 7, 1)]>
+>>>
+>>> Blog.objects.get(id=1)
+<Blog: New York>
+>>>
+>>> Blog.objects.get(pk=1)  
+<Blog: New York>
+>>> Blog.objects.filter(id=1)    
+<QuerySet [<Blog: New York>]>
