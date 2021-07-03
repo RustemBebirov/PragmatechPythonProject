@@ -24,7 +24,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('jet/', include('jet.urls','jet')),
+    path('jet/', include('jet.urls','jet')), #Django Jet Url
+    path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
     path('', include('firstapp.urls', namespace='firstapp')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
