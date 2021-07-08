@@ -38,34 +38,23 @@
         <div class="container">
            <div class="row">
                <div class="col-lg-8">
+                   {% for blog in blogs %}
                    <div class="single-blog mt-30">
                        <div class="blog-thum">
-                           <img src="images/blog/b-1.jpg" alt="Blog">
+                           <img src="{{blog.image.url}}" alt="Blog">
                        </div>
                        <div class="blog-cont">
-                           <a href="blog-single.html"><h3>Few tips for get better results in examination</h3></a>
+                           <a href="{% url 'firstapp:blog-single' "><h3>{{blog.title}}</h3></a>
                            <ul>
-                               <li><a href="#"><i class="fa fa-calendar"></i>25 Dec 2018</a></li>
-                               <li><a href="#"><i class="fa fa-user"></i>Mark anthem</a></li>
-                               <li><a href="#"><i class="fa fa-tags"></i>Education</a></li>
+                               <li><a href="#"><i class="fa fa-calendar"></i>{{blog.created_at}}</a></li>
+                               <li><a href="#"><i class="fa fa-user"></i>{{blog.blog_author}}</a></li>
+                               <li><a href="#"><i class="fa fa-tags"></i>{{blog.category}}</a></li>
                            </ul>
-                           <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus .</p>
+                           <p>{{blog.short_description}}</p>
                        </div>
                    </div> <!-- single blog -->
-                   <div class="single-blog mt-30">
-                       <div class="blog-thum">
-                           <img src="images/blog/b-2.jpg" alt="Blog">
-                       </div>
-                       <div class="blog-cont">
-                           <a href="blog-single.html"><h3>Few tips for get better results in examination</h3></a>
-                           <ul>
-                               <li><a href="#"><i class="fa fa-calendar"></i>25 Dec 2018</a></li>
-                               <li><a href="#"><i class="fa fa-user"></i>Mark anthem</a></li>
-                               <li><a href="#"><i class="fa fa-tags"></i>Education</a></li>
-                           </ul>
-                           <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus .</p>
-                       </div>
-                   </div> <!-- single blog -->
+                   {% endfor %}
+                   
                    <nav class="courses-pagination mt-50">
                         <ul class="pagination justify-content-lg-end justify-content-center">
                             <li class="page-item">
@@ -97,14 +86,10 @@
                                <div class="categories mt-30">
                                    <h4>Categories</h4>
                                    <ul>
-                                       <li><a href="#">Fronted</a></li>
-                                       <li><a href="#">Backend</a></li>
-                                       <li><a href="#">Photography</a></li>
-                                       <li><a href="#">Technology</a></li>
-                                       <li><a href="#">GMET</a></li>
-                                       <li><a href="#">Language</a></li>
-                                       <li><a href="#">Science</a></li>
-                                       <li><a href="#">Accounting</a></li>
+                                       {% for category in categories %}
+                                       <li><a href="#">{{category}}</a></li>
+                                       {% endfor %}
+                                       
                                    </ul>
                                </div>
                            </div> <!-- categories -->

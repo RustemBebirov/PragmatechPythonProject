@@ -38,7 +38,7 @@ class Blog(models.Model):
 
     # relation's
     category = models.ForeignKey('Blog_category', on_delete=models.CASCADE, related_name='blogs', db_index=True)
-
+    blog_author = models.ForeignKey(User,on_delete=models.CASCADE, related_name='blogauthor', db_index=True)
 
     # information's
     title = models.CharField('Title',max_length=127,)
@@ -172,6 +172,26 @@ class Order_Comment(models.Model):
     def __str__(self) -> str:
         return f'{self.full_name} adli sexsin {self.order} adli ordere commenti'
 
+
+class Order_category(models.Model):
+    """this table show order category information"""
+
+    # information's
+    title = models.CharField('Title',max_length=127,)
+
+    # moderation's
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
+    is_published = models.BooleanField('Is published', default=True)
+
+    class Meta:
+        verbose_name = 'Order Category'
+        verbose_name_plural = 'Order Categories'
+        ordering = ('title','-created_at')
+         
+
+    def __str__(self) -> str:
+        return self.title
 # ORder model end
 
 # Teacher model start

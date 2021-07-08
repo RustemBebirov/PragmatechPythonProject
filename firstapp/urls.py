@@ -6,9 +6,8 @@ app_name = 'firstapp'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('register/', views.register, name='register'),
     path('blog/', views.blog, name='blog'),
-    path('blog-single/', views.blog_single, name='blog-single'),
+    path('blog-single/<int:id>', views.blog_single, name='blog-single'),
     path('shop/', views.shop, name='shop'),
     path('shop-single/', views.shop_single, name='shop-single'),
     path('teachers/', views.teachers, name='teachers'),

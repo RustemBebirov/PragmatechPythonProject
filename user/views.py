@@ -1,0 +1,41 @@
+import django
+from django.forms import forms
+from django.shortcuts import render, redirect
+from .forms import RegisterForm
+
+from django.contrib.auth.models import User
+
+from django.contrib.auth import login
+
+# Create your views here.
+
+def register(request):
+    if request.method == 'POST':
+        form =RegisterForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data.get('name')
+            email = form.cleaned_data.get('email')
+            password = form.cleaned_data.get('password')
+
+            newUser = User(username = name, email = email)
+            newUser.set_password(password)
+            newUser.save()
+            login(request,newUser)
+            
+            return redirect('firstapp:index')
+        context = {
+        'form' : form
+        }
+        return render(request,'register.html',context)
+    else:
+        form = RegisterForm()
+        context = {
+        'form' : form
+        }
+        return render(request,'register.html',context)
+
+def loginUser(request):
+    pass
+
+def logoutUser(request):
+    pass

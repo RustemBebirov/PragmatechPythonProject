@@ -1,18 +1,33 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Blog, Blog_category ,Blog_comment ,Order,Order_Comment, Order_category,Event,Tag,Teacher,Teacher_Comment,Course,Course_category,Course_Comment
 # Create your views here.
 
 def index(request):
     return render(request, 'index.html')
 
-def register(request):
-    return render(request, 'register.html')
 
 def blog(request):
-    return render(request, 'blog.html')
+    blogs = Blog.objects.all()
+    blog_categories = Blog_category.objects.all()
+    context = {
+        'blogs' : blogs,
+        'categories' : blog_categories,
+    }
 
-def blog_single(request):
-    return render(request, 'blog-single.html')
+    return render(request, 'blog.html',context)
+
+def blog_single(request,id):
+    blog = Blog.objects.get(id=id)
+    blog_categories = Blog_category.objects.all()
+    blog_comments = Blog_comment.objects.get(id=id)
+    context = {
+        'blog' : blog,
+        'categories' : blog_categories,
+        'comments' : blog_comments
+    }
+
+    return render(request, 'blog-single.html', context)
 
 def shop(request):
     return render(request, 'shop.html')

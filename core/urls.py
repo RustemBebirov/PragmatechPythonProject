@@ -27,6 +27,7 @@ urlpatterns = [
     path('jet/', include('jet.urls','jet')), #Django Jet Url
     path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
     path('', include('firstapp.urls', namespace='firstapp')),
+    path('user/', include('user.urls', namespace='user')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.index_title ='Edubin'

@@ -39,6 +39,7 @@
         <div class="container">
            <div class="row">
               <div class="col-lg-8">
+                  {% for blog in blogs %}
                   <div class="blog-details mt-30">
                       <div class="thum">
                           <img src="images/blog/b-1.jpg" alt="Blog Details">
@@ -177,14 +178,9 @@
                                <div class="categories mt-30">
                                    <h4>Categories</h4>
                                    <ul>
-                                       <li><a href="#">Fronted</a></li>
-                                       <li><a href="#">Backend</a></li>
-                                       <li><a href="#">Photography</a></li>
-                                       <li><a href="#">Technology</a></li>
-                                       <li><a href="#">GMET</a></li>
-                                       <li><a href="#">Language</a></li>
-                                       <li><a href="#">Science</a></li>
-                                       <li><a href="#">Accounting</a></li>
+                                       {% for category in categories %}
+                                       <li><a href="#">{{category}}</a></li>
+                                       {% endfor %}
                                    </ul>
                                </div>
                            </div> <!-- categories -->
