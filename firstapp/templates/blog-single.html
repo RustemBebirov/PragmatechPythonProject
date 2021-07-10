@@ -67,7 +67,7 @@
                                    <h3>Comment ({{blog.comment_blog.count}})</h3>
                                </div>  <!-- title -->
                                <ul>
-                                {% for comment in blog_comments %}
+                                    {% for comment in blog_comments %}
                                    <li>
                                        <div class="comment">
                                            <div class="comment-author">
@@ -88,8 +88,7 @@
                                         </div> <!-- comment -->
                             
                                    </li>
-                                {% endfor %}
-                                
+                                    {% endfor %}
                                </ul>
                                <div class="title pt-45 pb-25">
                                    <h3>Leave a comment</h3>

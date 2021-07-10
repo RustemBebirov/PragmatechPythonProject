@@ -9,7 +9,7 @@ urlpatterns = [
     path('blog/', views.blog, name='blog'),
     path('blog-single/<slug:slug>', views.blog_single, name='blog-single'),
     path('shop/', views.shop, name='shop'),
-    path('shop-single/', views.shop_single, name='shop-single'),
+    path('shop-single/<int:id>', views.shop_single, name='shop-single'),
     path('teachers/', views.teachers, name='teachers'),
     path('teachers-single/', views.teachers_single, name='teachers-single'),
     path('courses/', views.courses, name='courses'),
@@ -20,5 +20,5 @@ urlpatterns = [
     path('ploicy/', views.policy, name='policy'),
     path('faq/', views.faq, name='faq'),
     path('events/', views.events, name='events'),
-    path('events-single/', views.events_single, name='events-single'),
+    path('events-single/<int:id>', views.events_single, name='events-single'),
 ]

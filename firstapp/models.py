@@ -132,11 +132,15 @@ class Order(models.Model):
     short_description = models.CharField('Short Description',max_length=127)
     description = models.TextField('Description')
     seller = models.CharField('Seller',max_length=127)
+    image =  models.ImageField("Image", upload_to='order_images')
     image1 = models.ImageField("Image", upload_to='order_images')
     image2 = models.ImageField("Image", upload_to='order_images')
     image3 = models.ImageField("Image", upload_to='order_images')
     image4 = models.ImageField("Image", upload_to='order_images')
     image5 = models.ImageField("Image", upload_to='order_images')
+    image6 = models.ImageField("Image", upload_to='order_images')
+    image7 = models.ImageField("Image", upload_to='order_images')
+    image8 = models.ImageField("Image", upload_to='order_images')
 
     # moderation's
     created_at = models.DateField(auto_now_add=True)
@@ -150,6 +154,10 @@ class Order(models.Model):
     
     def __str__(self) -> str:
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('firstapp:shop-single',args=([self.id]))
+
 
 class Order_Comment(models.Model):
 
@@ -337,7 +345,10 @@ class Event(models.Model):
     start = models.DateTimeField('Start time')
     end = models.DateTimeField("End time")
     auditor = models.CharField("Auditor",max_length=127)
+    short_description = models.CharField('Short Description',max_length=127)
+    description = models.TextField('Description')
     image = models.ImageField('Image', upload_to='Event images')
+    singleimage = models.ImageField('Single Image', upload_to='Event images')
     address = models.CharField("Address",max_length=127)
 
     # moderation's
@@ -354,7 +365,9 @@ class Event(models.Model):
     def __str__(self) -> str:
         return f'{self.title} adli event'    
 
-
+    def get_absolute_url(self):
+        return reverse("firstapp:events-single", kwargs={"id": self.id})
+    
 class Contact(models.Model):
     """this table show category information"""
 

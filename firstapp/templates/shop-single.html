@@ -44,22 +44,22 @@
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-image-1" role="tabpanel" aria-labelledby="pills-image-1-tab">
                                     <div class="shop-image">
-                                        <a href="images/shop-single/ss-1.jpg" class="shop-items"><img src="images/shop-single/ss-1.jpg" alt="Shop"></a>
+                                        <a href="{{order.image1.url}}" class="shop-items"><img src="{{order.image1.url}}" alt="Shop"></a>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="pills-image-2" role="tabpanel" aria-labelledby="pills-image-2-tab">
                                     <div class="shop-image">
-                                        <a href="images/shop-single/ss-2.jpg" class="shop-items"><img src="images/shop-single/ss-2.jpg" alt="Shop"></a>
+                                        <a href="{{order.image2.url}}" class="shop-items"><img src="{{order.image2.url}}" alt="Shop"></a>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="pills-image-3" role="tabpanel" aria-labelledby="pills-image-3-tab">
                                     <div class="shop-image">
-                                        <a href="images/shop-single/ss-3.jpg" class="shop-items"><img src="images/shop-single/ss-3.jpg" alt="Shop"></a>
+                                        <a href="{{order.image3.url}}" class="shop-items"><img src="{{order.image3.url}}" alt="Shop"></a>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="pills-image-4" role="tabpanel" aria-labelledby="pills-image-4-tab">
                                     <div class="shop-image">
-                                        <a href="images/shop-single/ss-1.jpg" class="shop-items"><img src="images/shop-single/ss-1.jpg" alt="Shop"></a>
+                                        <a href="{{order.image4.url}}" class="shop-items"><img src="{{order.image4.url}}" alt="Shop"></a>
                                     </div>
                                 </div>
                             </div>
@@ -67,28 +67,28 @@
                                 <li class="nav-item">
                                     <a class="active" id="pills-image-1-tab" data-toggle="pill" href="#pills-image-1" role="tab" aria-controls="pills-image-1" aria-selected="true">
                                         <span class="shop-thum">
-                                            <img src="images/shop-single/ss-s1.jpg" alt="Thum">
+                                            <img src="{{order.image5.url}}" alt="Thum">
                                         </span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a id="pills-image-2-tab" data-toggle="pill" href="#pills-image-2" role="tab" aria-controls="pills-image-2" aria-selected="false">
                                         <span class="shop-thum">
-                                            <img src="images/shop-single/ss-s2.jpg" alt="Thum">
+                                            <img src="{{order.image6.url}}" alt="Thum">
                                         </span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a id="pills-image-3-tab" data-toggle="pill" href="#pills-image-3" role="tab" aria-controls="pills-image-1" aria-selected="false">
                                         <span class="shop-thum">
-                                            <img src="images/shop-single/ss-s3.jpg" alt="Thum">
+                                            <img src="{{order.image7.url}}" alt="Thum">
                                         </span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a id="pills-image-4-tab" data-toggle="pill" href="#pills-image-4" role="tab" aria-controls="pills-image-4" aria-selected="false">
                                         <span class="shop-thum">
-                                            <img src="images/shop-single/ss-s1.jpg" alt="Thum">
+                                            <img src="{{order.image8.url}}" alt="Thum">
                                         </span>
                                     </a>
                                 </li>
@@ -97,9 +97,9 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="shop-right pt-30">
-                            <h6>Big Pen </h6>
-                            <span>$50.00</span>
-                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                            <h6>{{order.title}} </h6>
+                            <span>${{order.price}}</span>
+                            <p>{{order.short_description}}</p>
                             <div class="nice-number pt-15">
                                 <input type="number" value="1">
                             </div>
@@ -123,7 +123,7 @@
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
                                     <div class="description-cont pt-40">
-                                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                                        <p>{{order.description}}</p>
                                     </div>
                                 </div> <!-- row -->
                                 <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
@@ -187,12 +187,12 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-single">
-                                                            <input type="text" placeholder="Fast name">
+                                                            <input type="text" placeholder="Full Name" name="fullname">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-single">
-                                                            <input type="text" placeholder="Last Name">
+                                                            <input type="email" placeholder="Email" name="email">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-12">
@@ -211,7 +211,7 @@
                                                     </div>
                                                     <div class="col-lg-12">
                                                         <div class="form-single">
-                                                            <textarea placeholder="Comment"></textarea>
+                                                            <textarea placeholder="Comment" name="comment"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-12">
@@ -238,10 +238,11 @@
                     </div>
                 </div> <!-- row -->
                 <div class="row justify-content-center">
+                {% for order in orders %}
                     <div class="col-lg-3 col-md-6 col-sm-8">
                         <div class="single-publication mt-30 text-center">
                             <div class="image">
-                                <img src="images/publication/p-1.jpg" alt="Publication">
+                                <img src="{{order.image}}" alt="Publication">
                                 <div class="add-cart">
                                     <ul>
                                         <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
@@ -250,12 +251,12 @@
                                 </div>
                             </div>
                             <div class="content pt-10">
-                                <h5 class="book-title"><a href="#">Stones The Road </a></h5>
-                                <p class="writer-name"><span>By</span> Scott Trench</p>
+                                <h5 class="book-title"><a href="#">{{order.title}}</a></h5>
+                                <p class="writer-name"><span>By</span>{{order.seller}}</p>
                                 <div class="price-btn d-flex align-items-center justify-content-between">
                                     <div class="price pt-20">
-                                        <span class="discount-price">$250</span>
-                                        <span class="normal-price">$200</span>
+                                        <!-- <span class="discount-price">$250</span> -->
+                                        <span class="normal-price">${{order.price}}</span>
                                     </div>
                                     <div class="button pt-10">
                                         <a href="#" class="main-btn"><i class="fa fa-cart-plus"></i> Buy Now</a>
@@ -264,84 +265,7 @@
                             </div>
                         </div> <!-- single publication -->
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-8">
-                        <div class="single-publication mt-30 text-center">
-                            <div class="image">
-                                <img src="images/publication/p-2.jpg" alt="Publication">
-                                <div class="add-cart">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="content pt-10">
-                                <h5 class="book-title"><a href="#">The Stranded </a></h5>
-                                <p class="writer-name"><span>By</span> Scott Trench</p>
-                                <div class="price-btn d-flex align-items-center justify-content-between">
-                                    <div class="price pt-20">
-                                        <span class="discount-price">$250</span>
-                                        <span class="normal-price">$200</span>
-                                    </div>
-                                    <div class="button pt-10">
-                                        <a href="#" class="main-btn"><i class="fa fa-cart-plus"></i> Buy Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- single publication -->
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-8">
-                        <div class="single-publication mt-30 text-center">
-                            <div class="image">
-                                <img src="images/publication/p-3.jpg" alt="Publication">
-                                <div class="add-cart">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="content pt-10">
-                                <h5 class="book-title"><a href="#">The Sicario </a></h5>
-                                <p class="writer-name"><span>By</span> Scott Trench</p>
-                                <div class="price-btn d-flex align-items-center justify-content-between">
-                                    <div class="price pt-20">
-                                        <span class="discount-price">$250</span>
-                                        <span class="normal-price">$200</span>
-                                    </div>
-                                    <div class="button pt-10">
-                                        <a href="#" class="main-btn"><i class="fa fa-cart-plus"></i> Buy Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- single publication -->
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-8">
-                        <div class="single-publication mt-30 text-center">
-                            <div class="image">
-                                <img src="images/publication/p-4.jpg" alt="Publication">
-                                <div class="add-cart">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="content pt-10">
-                                <h5 class="book-title"><a href="#">There Were None </a></h5>
-                                <p class="writer-name"><span>By</span> Scott Trench</p>
-                                <div class="price-btn d-flex align-items-center justify-content-between">
-                                    <div class="price pt-20">
-                                        <span class="discount-price">$250</span>
-                                        <span class="normal-price">$200</span>
-                                    </div>
-                                    <div class="button pt-10">
-                                        <a href="#" class="main-btn"><i class="fa fa-cart-plus"></i> Buy Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- single publication -->
-                    </div>
+                {% endfor %}    
                 </div> <!-- row -->
             </div> <!-- related item -->
         </div> <!-- container -->

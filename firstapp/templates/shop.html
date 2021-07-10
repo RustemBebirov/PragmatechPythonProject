@@ -67,10 +67,11 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="shop-grid" role="tabpanel" aria-labelledby="shop-grid-tab">
                     <div class="row justify-content-center">
+                        {% for order in orders %}
                         <div class="col-lg-3 col-md-6 col-sm-8">
                             <div class="single-publication mt-30 text-center">
                                 <div class="image">
-                                    <img src="images/publication/p-1.jpg" alt="Publication">
+                                    <img src="{{order.image.url}}" alt="Publication">
                                     <div class="add-cart">
                                         <ul>
                                             <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
@@ -79,202 +80,21 @@
                                     </div>
                                 </div>
                                 <div class="content pt-20">
-                                    <h5 class="book-title"><a href="#">Stones The Road </a></h5>
-                                    <p class="writer-name"><span>By</span> Scott Trench</p>
+                                    <h5 class="book-title"><a href="#">{{order.title}}</a></h5>
+                                    <p class="writer-name"><span>By</span> {{order.seller}}</p>
                                     <div class="price-btn d-flex align-items-center justify-content-between">
                                         <div class="price pt-20">
-                                            <span class="discount-price">$250</span>
-                                            <span class="normal-price">$200</span>
+                                            <!-- <span class="discount-price">$250</span> -->
+                                            <span class="normal-price">${{order.price}}</span>
                                         </div>
                                         <div class="button pt-10">
-                                            <a href="#" class="main-btn"><i class="fa fa-cart-plus"></i> Buy Now</a>
+                                            <a href="{{order.get_absolute_url}}" class="main-btn"><i class="fa fa-cart-plus"></i> Buy Now</a>
                                         </div>
                                     </div>
                                 </div>
                             </div> <!-- single publication -->
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-8">
-                            <div class="single-publication mt-30 text-center">
-                                <div class="image">
-                                    <img src="images/publication/p-2.jpg" alt="Publication">
-                                    <div class="add-cart">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="content pt-20">
-                                    <h5 class="book-title"><a href="#">The Stranded </a></h5>
-                                    <p class="writer-name"><span>By</span> Scott Trench</p>
-                                    <div class="price-btn d-flex align-items-center justify-content-between">
-                                        <div class="price pt-20">
-                                            <span class="discount-price">$250</span>
-                                            <span class="normal-price">$200</span>
-                                        </div>
-                                        <div class="button pt-10">
-                                            <a href="#" class="main-btn"><i class="fa fa-cart-plus"></i> Buy Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> <!-- single publication -->
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-8">
-                            <div class="single-publication mt-30 text-center">
-                                <div class="image">
-                                    <img src="images/publication/p-3.jpg" alt="Publication">
-                                    <div class="add-cart">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="content pt-20">
-                                    <h5 class="book-title"><a href="#">The Sicario </a></h5>
-                                    <p class="writer-name"><span>By</span> Scott Trench</p>
-                                    <div class="price-btn d-flex align-items-center justify-content-between">
-                                        <div class="price pt-20">
-                                            <span class="discount-price">$250</span>
-                                            <span class="normal-price">$200</span>
-                                        </div>
-                                        <div class="button pt-10">
-                                            <a href="#" class="main-btn"><i class="fa fa-cart-plus"></i> Buy Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> <!-- single publication -->
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-8">
-                            <div class="single-publication mt-30 text-center">
-                                <div class="image">
-                                    <img src="images/publication/p-4.jpg" alt="Publication">
-                                    <div class="add-cart">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="content pt-20">
-                                    <h5 class="book-title"><a href="#">There Were None </a></h5>
-                                    <p class="writer-name"><span>By</span> Scott Trench</p>
-                                    <div class="price-btn d-flex align-items-center justify-content-between">
-                                        <div class="price pt-20">
-                                            <span class="discount-price">$250</span>
-                                            <span class="normal-price">$200</span>
-                                        </div>
-                                        <div class="button pt-10">
-                                            <a href="#" class="main-btn"><i class="fa fa-cart-plus"></i> Buy Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> <!-- single publication -->
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-8">
-                            <div class="single-publication mt-30 text-center">
-                                <div class="image">
-                                    <img src="images/publication/p-5.jpg" alt="Publication">
-                                    <div class="add-cart">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="content pt-20">
-                                    <h5 class="book-title"><a href="#">There Were None </a></h5>
-                                    <p class="writer-name"><span>By</span> Scott Trench</p>
-                                    <div class="price-btn d-flex align-items-center justify-content-between">
-                                        <div class="price pt-20">
-                                            <span class="discount-price">$250</span>
-                                            <span class="normal-price">$200</span>
-                                        </div>
-                                        <div class="button pt-10">
-                                            <a href="#" class="main-btn"><i class="fa fa-cart-plus"></i> Buy Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> <!-- single publication -->
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-8">
-                            <div class="single-publication mt-30 text-center">
-                                <div class="image">
-                                    <img src="images/publication/p-6.jpg" alt="Publication">
-                                    <div class="add-cart">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="content pt-20">
-                                    <h5 class="book-title"><a href="#">There Were None </a></h5>
-                                    <p class="writer-name"><span>By</span> Scott Trench</p>
-                                    <div class="price-btn d-flex align-items-center justify-content-between">
-                                        <div class="price pt-20">
-                                            <span class="discount-price">$250</span>
-                                            <span class="normal-price">$200</span>
-                                        </div>
-                                        <div class="button pt-10">
-                                            <a href="#" class="main-btn"><i class="fa fa-cart-plus"></i> Buy Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> <!-- single publication -->
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-8">
-                            <div class="single-publication mt-30 text-center">
-                                <div class="image">
-                                    <img src="images/publication/p-7.jpg" alt="Publication">
-                                    <div class="add-cart">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="content pt-20">
-                                    <h5 class="book-title"><a href="#">There Were None </a></h5>
-                                    <p class="writer-name"><span>By</span> Scott Trench</p>
-                                    <div class="price-btn d-flex align-items-center justify-content-between">
-                                        <div class="price pt-20">
-                                            <span class="discount-price">$250</span>
-                                            <span class="normal-price">$200</span>
-                                        </div>
-                                        <div class="button pt-10">
-                                            <a href="#" class="main-btn"><i class="fa fa-cart-plus"></i> Buy Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> <!-- single publication -->
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-8">
-                            <div class="single-publication mt-30 text-center">
-                                <div class="image">
-                                    <img src="images/publication/p-8.jpg" alt="Publication">
-                                    <div class="add-cart">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="content pt-20">
-                                    <h5 class="book-title"><a href="#">There Were None </a></h5>
-                                    <p class="writer-name"><span>By</span> Scott Trench</p>
-                                    <div class="price-btn d-flex align-items-center justify-content-between">
-                                        <div class="price pt-20">
-                                            <span class="discount-price">$250</span>
-                                            <span class="normal-price">$200</span>
-                                        </div>
-                                        <div class="button pt-10">
-                                            <a href="#" class="main-btn"><i class="fa fa-cart-plus"></i> Buy Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> <!-- single publication -->
-                        </div>
+                        {% endfor %}
                     </div> <!-- row -->
                 </div>
                 <div class="tab-pane fade" id="shop-list" role="tabpanel" aria-labelledby="shop-list-tab">

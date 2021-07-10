@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.forms import forms
 from django.forms.forms import Form
 from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse, request
@@ -50,16 +51,35 @@ def blog_single(request,slug):
     return render(request, 'blog-single.html', context)
 
 def shop(request):
-    return render(request, 'shop.html')
+    orders = Order.objects.all()
+    context = {
+        'orders' : orders
+    }
+    return render(request, 'shop.html',context)
 
-def shop_single(request):
-    return render(request, 'shop-single.html')
+def shop_single(request,id):
+    order = get_object_or_404(Order, id=id)
+    orders = Order.objects.order_by('-created_at')[:4]
+    
+    context = {
+        'order' : order,
+        'orders' : orders
+    }
+    return render(request, 'shop-single.html', context)
 
 def events(request):
-    return render(request, 'events.html')
+    lesson_events = Event.objects.all()
+    context = {
+        'events' : lesson_events,
+    }
+    return render(request, 'events.html', context)
 
-def events_single(request):
-    return render(request, 'events-single.html')
+def events_single(request,id):
+    event = get_object_or_404(Event, id=id)
+    context = {
+        'event' : event,
+    }
+    return render(request, 'events-single.html', context)
 
 def teachers(request):
     return render(request, 'teachers.html')

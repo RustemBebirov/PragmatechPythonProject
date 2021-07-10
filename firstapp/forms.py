@@ -44,6 +44,7 @@ class ContactForm(forms.ModelForm):
         }
 
 class BlogCommentForm(forms.Form):
+
     full_name = forms.CharField(max_length=127,label='Your Name',widget=forms.TextInput(attrs={'class': 'form-input','placeholder':'Your Name'}))
     email = forms.EmailField(max_length=127,label='Your Email',widget=forms.EmailInput(attrs={'class': 'form-input','placeholder':'Your Email'}))
     content = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-input','placeholder':'Comment'}))
@@ -61,3 +62,10 @@ class BlogCommentForm(forms.Form):
             'content' : content,
         }
         return values
+
+
+
+    full_name = forms.CharField(max_length=127,label='Your Name',widget=forms.TextInput(attrs={'class': 'form-input','placeholder':'Your Name'}))
+    email = forms.EmailField(max_length=127,label='Your Email',widget=forms.EmailInput(attrs={'class': 'form-input','placeholder':'Your Email'}))
+    content = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-input','placeholder':'Comment'}))
+
