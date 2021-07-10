@@ -2,9 +2,8 @@ import django
 from django.forms import forms
 from django.shortcuts import render, redirect
 from .forms import RegisterForm
-
+from django.contrib import messages
 from django.contrib.auth.models import User
-
 from django.contrib.auth import login
 
 # Create your views here.
@@ -21,12 +20,14 @@ def register(request):
             newUser.set_password(password)
             newUser.save()
             login(request,newUser)
+            messages.success(request,'Your registration is succsess')
             
             return redirect('firstapp:index')
-        context = {
-        'form' : form
-        }
-        return render(request,'register.html',context)
+        else:
+            context = {
+            'form' : form
+            }
+            return render(request,'register.html',context)
     else:
         form = RegisterForm()
         context = {

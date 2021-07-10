@@ -2,10 +2,10 @@ from django import forms
 from django.forms.fields import EmailField
 
 class RegisterForm(forms.Form):
-    name = forms.CharField(max_length=50,label='Your Name',widget=forms.TextInput(attrs={'class': 'form-input'}))
-    email = forms.EmailField(max_length=50,label='Your Email',widget=forms.EmailInput(attrs={'class': 'form-input'}))
-    password = forms.CharField(max_length=20,label='Password',widget=forms.PasswordInput(attrs={'class': 'form-input'}))
-    confirm = forms.CharField(max_length=20,label='Password Confirm',widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+    name = forms.CharField(max_length=50,label='Your Name',widget=forms.TextInput(attrs={'class': 'form-input','placeholder':'Your Name'}))
+    email = forms.EmailField(max_length=50,label='Your Email',widget=forms.EmailInput(attrs={'class': 'form-input','placeholder':'Your Email'}))
+    password = forms.CharField(max_length=20,label='Password',widget=forms.PasswordInput(attrs={'class': 'form-input','placeholder':'Your Password'}))
+    confirm = forms.CharField(max_length=20,label='Password Confirm',widget=forms.PasswordInput(attrs={'class': 'form-input','placeholder':'Confirm'}))
 
     def clean(self):
         name = self.cleaned_data.get('name')

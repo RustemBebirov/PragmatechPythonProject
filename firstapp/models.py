@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.db.models.deletion import CASCADE
 from django.db.models.enums import TextChoices
+from django.urls import reverse
 
 User = get_user_model()
 
@@ -45,7 +46,7 @@ class Blog(models.Model):
     short_description = models.CharField('Short description', max_length=127 )
     description = models.TextField("Description", null=True)
     image = models.ImageField("Image", upload_to='blog_images')
-    slug = models.SlugField('Slug',max_length=160,)
+    slug = models.SlugField('Slug',max_length=160,unique_for_date='created_at')
     tag = models.ManyToManyField(Tag, verbose_name='Tag')
 
     # moderation's
@@ -64,6 +65,9 @@ class Blog(models.Model):
     def __str__(self) -> str:
         return self.title
 
+
+    def get_absolute_url(self):
+        return reverse('firstapp:blog-single',args=([self.slug]))
 
 
 
@@ -94,9 +98,9 @@ class Blog_comment(models.Model):
     """ in this table you can store comment information"""
 
     # relation's
-    author = models.ForeignKey(User, verbose_name='Author', on_delete=models.CASCADE, db_index=True, related_name='comments')
-    blog = models.ForeignKey('Blog', verbose_name='Blog', related_name='blogs',db_index=True, on_delete=CASCADE)
-
+    # author = models.ForeignKey(User, verbose_name='Author', on_delete=models.CASCADE, db_index=True, related_name='comments')
+    blog = models.ForeignKey('Blog', verbose_name='Blog', related_name='comment_blog',db_index=True, on_delete=CASCADE)
+    # parent = models.ForeignKey("self", null=True, blank=True, on_delete=CASCADE)
 
     # information's
     full_name = models.CharField('FullName',max_length=127)
@@ -359,7 +363,7 @@ class Contact(models.Model):
     full_name = models.CharField('FullName',max_length=127)
     email = models.EmailField('E-mail',max_length=127)
     subject = models.CharField('Subject',max_length=127)
-    phone = models.IntegerField("Phone",)
+    phone = models.CharField("Phone",max_length=127)
     message = models.TextField('Message', help_text='You can send your mesaage from here')
 
     # moderation's

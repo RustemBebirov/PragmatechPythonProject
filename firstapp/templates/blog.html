@@ -8,11 +8,11 @@
 
 <body>
    {% extends 'base.html' %}
-
+    {% load static %}
    {% block content %}
     <!--====== PAGE BANNER PART START ======-->
     
-    <section id="page-banner" class="pt-105 pb-130 bg_cover" data-overlay="8" style="background-image: url(images/page-banner-1.jpg)">
+    <section id="page-banner" class="pt-105 pb-130 bg_cover" data-overlay="8" style="background-image: url({% static 'assets/images/page-banner-1.jpg' %})">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -20,7 +20,7 @@
                         <h2>Blog</h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'firstapp:index' %}">Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Blog</li>
                             </ol>
                         </nav>
@@ -44,7 +44,8 @@
                            <img src="{{blog.image.url}}" alt="Blog">
                        </div>
                        <div class="blog-cont">
-                           <a href="{% url 'firstapp:blog-single' "><h3>{{blog.title}}</h3></a>
+                           
+                           <a href="{{ blog.get_absolute_url }}"><h3>{{blog.title}}</h3></a>
                            <ul>
                                <li><a href="#"><i class="fa fa-calendar"></i>{{blog.created_at}}</a></li>
                                <li><a href="#"><i class="fa fa-user"></i>{{blog.blog_author}}</a></li>

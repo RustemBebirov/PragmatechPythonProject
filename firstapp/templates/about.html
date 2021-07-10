@@ -7,12 +7,12 @@
 
 <body>
     {% extends "base.html" %}
-   
+    {% load static %}
 
     {% block content %}
     <!--====== PAGE BANNER PART START ======-->
     
-    <section id="page-banner" class="pt-105 pb-110 bg_cover" data-overlay="8" style="background-image: url(images/page-banner-1.jpg)">
+    <section id="page-banner" class="pt-105 pb-110 bg_cover" data-overlay="8" style="background-image: url({% static 'assets/images/page-banner-1.jpg' %})">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -48,7 +48,7 @@
                 </div> <!-- about cont -->
                 <div class="col-lg-7">
                     <div class="about-image mt-50">
-                        <img src="images/about/about-2.jpg" alt="About">
+                        <img src="{% static 'assets/images/about/about-2.jpg' %}" alt="About">
                     </div>  <!-- about image -->
                 </div> 
             </div> <!-- row -->
@@ -84,7 +84,7 @@
 
     <!--====== COUNTER PART START ======-->
     
-    <div id="counter-part" class="bg_cover pt-65 pb-110" data-overlay="8" style="background-image: url(images/bg-2.jpg)">
+    <div id="counter-part" class="bg_cover pt-65 pb-110" data-overlay="8" style="background-image: url({% static 'assets/images/bg-2.jpg' %})">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-sm-6">
@@ -226,7 +226,7 @@
    
     <!--====== TEASTIMONIAL PART START ======-->
     
-    <section id="testimonial" class="bg_cover pt-115 pb-120" data-overlay="8" style="background-image: url(images/bg-2.jpg)">
+    <section id="testimonial" class="bg_cover pt-115 pb-120" data-overlay="8" style="background-image: url({% static 'assets/images/bg-2.jpg' %})">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
@@ -240,7 +240,7 @@
                 <div class="col-lg-6">
                     <div class="single-testimonial">
                         <div class="testimonial-thum">
-                            <img src="images/testimonial/t-1.jpg" alt="Testimonial">
+                            <img src="{% static 'assets/images/testimonial/t-1.jpg' %}" alt="Testimonial">
                             <div class="quote">
                                 <i class="fa fa-quote-right"></i>
                             </div>
@@ -255,7 +255,7 @@
                 <div class="col-lg-6">
                     <div class="single-testimonial">
                         <div class="testimonial-thum">
-                            <img src="images/testimonial/t-2.jpg" alt="Testimonial">
+                            <img src="{% static 'assets/images/testimonial/t-2.jpg' %}" alt="Testimonial">
                             <div class="quote">
                                 <i class="fa fa-quote-right"></i>
                             </div>
@@ -270,7 +270,7 @@
                 <div class="col-lg-6">
                     <div class="single-testimonial">
                         <div class="testimonial-thum">
-                            <img src="images/testimonial/t-3.jpg" alt="Testimonial">
+                            <img src="{% static 'assets/images/testimonial/t-3.jpg' %}" alt="Testimonial">
                             <div class="quote">
                                 <i class="fa fa-quote-right"></i>
                             </div>
@@ -295,32 +295,32 @@
             <div class="row patnar-slide">
                 <div class="col-lg-12">
                     <div class="single-patnar text-center mt-40">
-                        <img src="images/patnar-logo/p-1.png" alt="Logo">
+                        <img src="{% static 'assets/images/patnar-logo/p-1.png' %}" alt="Logo">
                     </div>
                 </div>
                 <div class="col-lg-12">
                     <div class="single-patnar text-center mt-40">
-                        <img src="images/patnar-logo/p-2.png" alt="Logo">
+                        <img src="{% static 'assets/images/patnar-logo/p-2.png' %}" alt="Logo">
                     </div>
                 </div>
                 <div class="col-lg-12">
                     <div class="single-patnar text-center mt-40">
-                        <img src="images/patnar-logo/p-3.png" alt="Logo">
+                        <img src="{% static 'assets/images/patnar-logo/p-3.png' %}" alt="Logo">
                     </div>
                 </div>
                 <div class="col-lg-12">
                     <div class="single-patnar text-center mt-40">
-                        <img src="images/patnar-logo/p-4.png" alt="Logo">
+                        <img src="{% static 'assets/images/patnar-logo/p-4.png' %}" alt="Logo">
                     </div>
                 </div>
                 <div class="col-lg-12">
                     <div class="single-patnar text-center mt-40">
-                        <img src="images/patnar-logo/p-2.png" alt="Logo">
+                        <img src="{% static 'assets/images/patnar-logo/p-2.png' %}" alt="Logo">
                     </div>
                 </div>
                 <div class="col-lg-12">
                     <div class="single-patnar text-center mt-40">
-                        <img src="images/patnar-logo/p-3.png" alt="Logo">
+                        <img src="{% static 'assets/images/patnar-logo/p-3.png' %}" alt="Logo">
                     </div>
                 </div>
             </div> <!-- row -->
