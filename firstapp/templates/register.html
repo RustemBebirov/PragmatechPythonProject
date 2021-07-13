@@ -24,7 +24,7 @@
                         <h2>Register</h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'firstapp:index' %}">Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Register</li>
                             </ol>
                         </nav>
@@ -67,7 +67,7 @@
                         </div>
                     </form>
                     <p class="loginhere">
-                        Have already an account ? <a href="#" class="loginhere-link">Login here</a>
+                        Have already an account ? <a href="{% url 'user:login' %}" class="loginhere-link">Login here</a>
                     </p>
                 </div>
             </div>

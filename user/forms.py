@@ -1,6 +1,13 @@
 from django import forms
 from django.forms.fields import EmailField
 
+
+class LoginForm(forms.Form):
+    username = forms.CharField(label='Username',widget=forms.TextInput())
+    password = forms.CharField(label='Password',widget=forms.PasswordInput())
+    
+
+
 class RegisterForm(forms.Form):
     name = forms.CharField(max_length=50,label='Your Name',widget=forms.TextInput(attrs={'class': 'form-input','placeholder':'Your Name'}))
     email = forms.EmailField(max_length=50,label='Your Email',widget=forms.EmailInput(attrs={'class': 'form-input','placeholder':'Your Email'}))
