@@ -47,47 +47,41 @@
                             <h2>Keep in touch</h2>
                         </div> <!-- section title -->
                         <div class="main-form pt-45">
-                            <form id="contact-form"  method="POST" data-toggle="validator">
+                            <form action="#" method="POST">
                                 {% csrf_token %}
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="single-form form-group">
-                                            {{form.full_name}}
-                                            <div class="help-block with-errors"></div>
-                                        </div> <!-- single form -->
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="single-form form-group">
-                                            {{form.email}}
-                                            <div class="help-block with-errors"></div>
-                                        </div> <!-- single form -->
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="single-form form-group">
+                                   <div class="row">
+                                       <div class="col-md-6 mb-2">
+                                           <div class="form-single">
+                                               {{form.full_name}}
+                                           </div> <!-- form single -->
+                                       </div>
+                                       <div class="col-md-6 mb-2">
+                                           <div class="form-single">
+                                               {{form.email}}
+                                           </div> <!-- form single -->
+                                       </div>
+                                       <div class="col-md-6 mb-2">
+                                        <div class="form-single">
                                             {{form.subject}}
-                                            <div class="help-block with-errors"></div>
-                                        </div> <!-- single form --> 
+                                        </div> <!-- form single -->
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="single-form form-group">
+                                    <div class="col-md-6 mb-2">
+                                        <div class="form-single">
                                             {{form.phone}}
-                                            <div class="help-block with-errors"></div>
-                                        </div> <!-- single form -->
+                                        </div> <!-- form single -->
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="single-form form-group">
+                                    <div class="col-md-12 mb-2">
+                                        <div class="form-single">
                                             {{form.message}}
-                                            <div class="help-block with-errors"></div>
-                                        </div> <!-- single form -->
+                                        </div> <!-- form single -->
                                     </div>
-                                    <p class="form-message"></p>
-                                    <div class="col-md-12">
-                                        <div class="single-form">
-                                            <button type="submit" class="main-btn">Send</button>
-                                        </div> <!-- single form -->
-                                    </div> 
-                                </div> <!-- row -->
-                            </form>
+                                       <div class="col-md-12">
+                                           <div class="form-single">
+                                               <button class="main-btn">Submit</button>
+                                           </div> <!-- form single -->
+                                       </div>
+                                   </div> <!-- row -->
+                               </form>
                         </div> <!-- main form -->
                     </div> <!--  contact from -->
                 </div>

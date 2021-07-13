@@ -21,7 +21,7 @@
                         <h2>Teachers</h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'firstapp:index' %}">Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Teachers</li>
                             </ol>
                         </nav>
@@ -41,11 +41,11 @@
                 <div class="col-lg-4 col-md-8">
                     <div class="teachers-left mt-50">
                         <div class="hero">
-                            <img src="images/teachers/t-1.jpg" alt="Teachers">
+                            <img src="{{teacher.image.url}}" alt="Teachers">
                         </div>
                         <div class="name">
-                            <h6>Mark Alen</h6>
-                            <span>Vice Chancellor</span>
+                            <h6>{{teacher.full_name}}</h6>
+                            <span>{{teacher.job}}</span>
                         </div>
                         <div class="social">
                             <ul>
@@ -56,7 +56,7 @@
                             </ul>
                         </div>
                         <div class="description">
-                            <p>Gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate..</p>
+                            <p>{{teacher.short_description}}</p>
                         </div>
                     </div> <!-- teachers left -->
                 </div>
@@ -78,15 +78,15 @@
                                 <div class="dashboard-cont">
                                     <div class="single-dashboard pt-40">
                                         <h5>About</h5>
-                                        <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus .</p>
+                                        <p>{{teacher.about}}</p>
                                     </div> <!-- single dashboard -->
                                     <div class="single-dashboard pt-40">
                                         <h5>Acchivments</h5>
-                                        <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus .</p>
+                                        <p>{{teacher.acchivments}}</p>
                                     </div> <!-- single dashboard -->
                                     <div class="single-dashboard pt-40">
                                         <h5>My Objective</h5>
-                                        <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus .</p>
+                                        <p>{{teacher.objective}}</p>
                                     </div> <!-- single dashboard -->
                                 </div> <!-- dashboard cont -->
                             </div>
@@ -97,10 +97,10 @@
                                             <div class="single-course mt-30">
                                                 <div class="thum">
                                                     <div class="image">
-                                                        <img src="images/course/cu-2.jpg" alt="Course">
+                                                        <img src="{{teacher.course.image.url}}" alt="Course">
                                                     </div>
                                                     <div class="price">
-                                                        <span>$10</span>
+                                                        <span>${{teacher.course.price}}</span>
                                                     </div>
                                                 </div>
                                                 <div class="cont border">
@@ -112,7 +112,7 @@
                                                         <li><i class="fa fa-star"></i></li>
                                                     </ul>
                                                     <span>(20 Reviews)</span>
-                                                    <a href="#"><h4>Learn basic javascript from start for beginner</h4></a>
+                                                    <a href="#"><h4>{{teacher.course.title}</h4></a>
                                                     <div class="course-teacher">
                                                         <div class="thum">
                                                             <a href="#"><img src="images/course/teacher/t-2.jpg" alt="teacher"></a>
@@ -130,43 +130,7 @@
                                                 </div>
                                             </div> <!-- single course -->
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="single-course mt-30">
-                                                <div class="thum">
-                                                    <div class="image">
-                                                        <img src="images/course/cu-3.jpg" alt="Course">
-                                                    </div>
-                                                    <div class="price">
-                                                        <span>$30</span>
-                                                    </div>
-                                                </div>
-                                                <div class="cont border">
-                                                    <ul>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                    </ul>
-                                                    <span>(20 Reviews)</span>
-                                                    <a href="#"><h4>Learn basic javascript from start for beginner</h4></a>
-                                                    <div class="course-teacher">
-                                                        <div class="thum">
-                                                            <a href="#"><img src="images/course/teacher/t-2.jpg" alt="teacher"></a>
-                                                        </div>
-                                                        <div class="name">
-                                                            <a href="#"><h6>Mark anthem</h6></a>
-                                                        </div>
-                                                        <div class="admin">
-                                                            <ul>
-                                                                <li><a href="#"><i class="fa fa-user"></i><span>31</span></a></li>
-                                                                <li><a href="#"><i class="fa fa-heart"></i><span>10</span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> <!-- single course -->
-                                        </div>
+                                        
                                     </div> <!-- row -->
                                 </div> <!-- courses cont -->
                             </div>

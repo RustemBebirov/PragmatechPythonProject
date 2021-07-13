@@ -27,7 +27,7 @@ def blog_single(request,slug):
     # blog = Blog.objects.get(id=id)
     blog = get_object_or_404(Blog, slug=slug)
     blog_categories = Blog_category.objects.all()
-    blog_comments = Blog_comment.objects.all().filter(id=blog.id)
+    blog_comments = blog.comment_blog.all()
     form = BlogCommentForm()
     if request.method == 'POST':
         form = BlogCommentForm(request.POST)
@@ -38,7 +38,7 @@ def blog_single(request,slug):
             newComment = Blog_comment(full_name = full_name, email = email, content=content ,blog= blog)
             newComment.save()
             messages.success(request,'Your comment is add')
-            return redirect('/')
+            return redirect(blog.get_absolute_url())
 
     context = {
         'blog' : blog,
@@ -82,16 +82,32 @@ def events_single(request,id):
     return render(request, 'events-single.html', context)
 
 def teachers(request):
-    return render(request, 'teachers.html')
+    teacher = Teacher.objects.all()
+    context = {
+        'teacher' : teacher
+    }
+    return render(request, 'teachers.html', context)
 
-def teachers_single(request):
-    return render(request, 'teachers-single.html')
+def teachers_single(request,id):
+    teacher = get_object_or_404(Teacher, id=id)
+    context = {
+        'teacher' : teacher,
+    }
+    return render(request, 'teachers-single.html', context)
 
 def courses(request):
-    return render(request, 'courses.html')
+    course = Course.objects.all()
+    context = {
+        'course' : course
+    }
+    return render(request, 'courses.html', context)
 
-def courses_single(request):
-    return render(request, 'courses-single.html')
+def courses_single(request,id):
+    course = get_object_or_404(Course, id=id)
+    context = {
+        'course' : course,
+    }
+    return render(request, 'courses-single.html', context)
 
 def gallery(request):
     return render(request, 'gallery.html')
@@ -99,11 +115,18 @@ def gallery(request):
 def contact(request):
     form = ContactForm()
     if request.method == "POST":
-        form = ContactForm(data=request.POST)
+        form = ContactForm(request.POST)
         if form.is_valid():
-            newContact= Contact(form)
+
+            full_name = form.cleaned_data.get('full_name')
+            email = form.cleaned_data.get('email')
+            subject = form.cleaned_data.get('subject')
+            phone = form.cleaned_data.get('phone')
+            message = form.cleaned_data.get('message')
+
+            newContact = Contact(full_name = full_name, email = email,subject=subject, phone = phone,message = message)
             newContact.save()
-            messages.success(request,'Succses')
+            messages.success(request,'Your message sent')
             return redirect ('firstapp:index')
     context = {
         'form' : form

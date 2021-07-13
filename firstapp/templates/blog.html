@@ -8,7 +8,7 @@
 
 <body>
    {% extends 'base.html' %}
-    {% load static %}
+    {% load static custom_filters %}
    {% block content %}
     <!--====== PAGE BANNER PART START ======-->
     
@@ -45,10 +45,10 @@
                        </div>
                        <div class="blog-cont">
                            
-                           <a href="{{ blog.get_absolute_url }}"><h3>{{blog.title}}</h3></a>
+                           <a href="{{ blog.get_absolute_url }}"><h3>{{blog.title| cap }}</h3></a>
                            <ul>
                                <li><a href="#"><i class="fa fa-calendar"></i>{{blog.created_at}}</a></li>
-                               <li><a href="#"><i class="fa fa-user"></i>{{blog.blog_author}}</a></li>
+                               <li><a href="#"><i class="fa fa-user"></i>{{blog.blog_author| upper }}</a></li>
                                <li><a href="#"><i class="fa fa-tags"></i>{{blog.category}}</a></li>
                            </ul>
                            <p>{{blog.short_description}}</p>

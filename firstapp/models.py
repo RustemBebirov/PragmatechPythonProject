@@ -47,7 +47,7 @@ class Blog(models.Model):
     description = models.TextField("Description", null=True)
     image = models.ImageField("Image", upload_to='blog_images')
     slug = models.SlugField('Slug',max_length=160,unique_for_date='created_at')
-    tag = models.ManyToManyField(Tag, verbose_name='Tag')
+    tag = models.ManyToManyField(Tag, verbose_name='Tag',related_name='blogs')
 
     # moderation's
     created_at = models.DateField(auto_now_add=True)
@@ -117,7 +117,7 @@ class Blog_comment(models.Model):
         ordering = ('-created_at',)
 
     def __str__(self) -> str:
-        return f'{self.author} terefinden  {self.blog} adli bloga yazilan comment'
+        return f'  {self.blog}  yazilan comment'
 
 # Blog model end
 
@@ -209,6 +209,7 @@ class Order_category(models.Model):
 # Teacher model start
 class Teacher(models.Model):
     # relation's
+    course = models.ForeignKey('Course', on_delete=models.CASCADE, related_name='teacher', db_index=True)
     
     """this table show Order comment information"""
     full_name = models.CharField("FullName",max_length=127)
@@ -217,7 +218,6 @@ class Teacher(models.Model):
     about = models.CharField("About",max_length=127)
     acchivments = models.CharField("Achivments",max_length=127)
     objective = models.CharField("My Objective" ,max_length=127)
-    courses = models.ManyToManyField('Course',verbose_name='Course')
     image = models.ImageField("Image",upload_to='teacher_images')
 
     # moderation's
@@ -232,6 +232,9 @@ class Teacher(models.Model):
     
     def __str__(self) -> str:
         return self.full_name
+
+    def get_absolute_url(self):
+        return reverse('firstapp:teachers-single',args=([self.id]))
     
 class Teacher_Comment(models.Model):
     # relation's
@@ -262,10 +265,10 @@ class Teacher_Comment(models.Model):
 class Course(models.Model):
     # relation's
     category = models.ForeignKey('Course_category', on_delete=models.CASCADE, related_name='courses', db_index=True)
-
+    
 
     """this table show Order comment information"""
-    title = models.CharField('FullName',max_length=127)
+    title = models.CharField('Title',max_length=127)
     price = models.CharField("Price", max_length=127)
     image = models.ImageField("Image",upload_to='course_images')
     durations = models.CharField("Duration",max_length=127)
@@ -287,6 +290,9 @@ class Course(models.Model):
     def __str__(self) -> str:
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('firstapp:courses-single',args=([self.id]))
+
 class Course_category(models.Model):
 
     """this table show Course category information"""
@@ -307,11 +313,12 @@ class Course_category(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
 class Course_Comment(models.Model):
     """this table show Order comment information"""
     
     # relation's
-    course = models.ForeignKey('Course', verbose_name='Course', related_name='courses',db_index=True, on_delete=CASCADE)
+    course = models.ForeignKey('Course', verbose_name='Course', related_name='comment',db_index=True, on_delete=CASCADE)
     
     
     # information's
@@ -332,6 +339,8 @@ class Course_Comment(models.Model):
     
     def __str__(self) -> str:
         return f'{self.full_name} adli sexsin {self.course} adli kursa commenti'
+    
+   
 
 
 # Course model end
@@ -339,6 +348,8 @@ class Course_Comment(models.Model):
 # Event model start
 class Event(models.Model):
     """this table show you event information"""
+     # relation's
+    teacher = models.ForeignKey('Teacher', verbose_name='Teacher', related_name='event',db_index=True, on_delete=CASCADE)
 
     # information's
     title = models.CharField('Title',max_length=127)
@@ -366,7 +377,7 @@ class Event(models.Model):
         return f'{self.title} adli event'    
 
     def get_absolute_url(self):
-        return reverse("firstapp:events-single", kwargs={"id": self.id})
+        return reverse('firstapp:events-single',args=([self.id]))
     
 class Contact(models.Model):
     """this table show category information"""
