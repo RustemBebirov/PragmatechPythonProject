@@ -9,11 +9,27 @@ from .forms import ContactForm, BlogCommentForm
 # Create your views here.
 
 def index(request):
-    
-    return render(request, 'index.html')
+    courses = Course.objects.all()[:4]
+    salam ='salam'
+    context = {
+        'courses' : courses,
+        'salam' : salam
+    }
+    return render(request, 'index.html', context)
 
 
 def blog(request):
+    keyword = request.GET.get('keyword')
+
+    if keyword:
+        blogs = Blog.objects.filter(title__icontains = keyword)
+        blog_categories = Blog_category.objects.all()
+        context = {
+        'blogs' : blogs,
+        'categories' : blog_categories,
+        }
+        return render(request,'blog.html',context)
+    
     blogs = Blog.objects.all()
     blog_categories = Blog_category.objects.all()
     context = {

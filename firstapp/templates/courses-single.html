@@ -40,7 +40,7 @@
                 <div class="col-lg-8">
                     <div class="courses-single-left mt-30">
                         <div class="title">
-                            <h3>Learn basic javascript from start for beginner</h3>
+                            <h3>{{course.title}}</h3>
                         </div> <!-- title -->
                         <div class="course-terms">
                             <ul>
@@ -51,14 +51,14 @@
                                         </div>
                                         <div class="name">
                                             <span>Teacher</span>
-                                            <h6>Mark anthem</h6>
+                                            <h6>{{course.teacher}}</h6>
                                         </div>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="course-category">
                                         <span>Category</span>
-                                        <h6>Programming </h6>
+                                        <h6>{{course.category}}</h6>
                                     </div>
                                 </li>
                                 <li>
@@ -78,7 +78,7 @@
                         </div> <!-- course terms -->
                         
                         <div class="courses-single-image pt-50">
-                            <img src="images/course/cu-1.jpg" alt="Courses">
+                            <img src="{{course.image.url}}" alt="Courses">
                         </div> <!-- courses single image -->
                         
                         <div class="courses-tab mt-30">

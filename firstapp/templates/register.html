@@ -13,6 +13,7 @@
 
     {% extends 'base.html' %}
     {% load static %}
+    {% load crispy_forms_tags %}
     {% block content %}
     <!--====== PAGE BANNER PART START ======-->
     
@@ -47,17 +48,9 @@
                         
                         
                         <div class="form-group">
-                            {{form.name}}
+                            {{form|crispy}}
                         </div>
-                        <div class="form-group">
-                            {{form.email}}
-                        </div>
-                        <div class="form-group">                         
-                            {{form.password}}
-                        </div>
-                        <div class="form-group">
-                            {{form.confirm}}
-                        </div>
+                        
                         <div class="form-group">
                             <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
                             <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>

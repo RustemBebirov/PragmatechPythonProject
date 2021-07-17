@@ -209,7 +209,7 @@ class Order_category(models.Model):
 # Teacher model start
 class Teacher(models.Model):
     # relation's
-    course = models.ForeignKey('Course', on_delete=models.CASCADE, related_name='teacher', db_index=True)
+    
     
     """this table show Order comment information"""
     full_name = models.CharField("FullName",max_length=127)
@@ -265,13 +265,16 @@ class Teacher_Comment(models.Model):
 class Course(models.Model):
     # relation's
     category = models.ForeignKey('Course_category', on_delete=models.CASCADE, related_name='courses', db_index=True)
-    
+    teacher = models.ForeignKey(User, on_delete=models.CASCADE, related_name='course', db_index=True)
 
     """this table show Order comment information"""
     title = models.CharField('Title',max_length=127)
     price = models.CharField("Price", max_length=127)
     image = models.ImageField("Image",upload_to='course_images')
-    durations = models.CharField("Duration",max_length=127)
+    summery = models.CharField("Summery", max_length=127)
+    requrements = models.CharField("Requrements", max_length=127,blank=True,null=True)
+    instructor = models.CharField("Instructor", max_length=127,blank=True,null=True)
+    durations = models.CharField("Duration",max_length=127,blank=True,null=True)
     leactures = models.CharField('Leactures',max_length=127)
     quizzes = models.CharField("Quizzes",max_length=127)
     
@@ -292,6 +295,7 @@ class Course(models.Model):
 
     def get_absolute_url(self):
         return reverse('firstapp:courses-single',args=([self.id]))
+
 
 class Course_category(models.Model):
 
@@ -314,12 +318,35 @@ class Course_category(models.Model):
     def __str__(self) -> str:
         return self.title
 
+
+    """this table show  tag information"""
+
+    # information's
+    lecture = models.CharField('Lecture',max_length=127,)
+    title = models.CharField('Title',max_length=127,)
+    time = models.CharField('Course time',max_length=127,)
+    short_description = models.CharField('Short Description',max_length=127,)
+
+    # moderation's
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
+    is_published = models.BooleanField('Is published', default=True)
+
+    class Meta:
+        verbose_name = 'Curriculum'
+        verbose_name_plural = 'Curriculums'
+        ordering = ('title','-created_at')
+    
+    def __str__(self) -> str:
+        return self.title
+
+   
+
 class Course_Comment(models.Model):
-    """this table show Order comment information"""
+    """this table show Course comment information"""
     
     # relation's
     course = models.ForeignKey('Course', verbose_name='Course', related_name='comment',db_index=True, on_delete=CASCADE)
-    
     
     # information's
     full_name = models.CharField('FullName',max_length=127)
@@ -380,7 +407,7 @@ class Event(models.Model):
         return reverse('firstapp:events-single',args=([self.id]))
     
 class Contact(models.Model):
-    """this table show category information"""
+    """this table show contact information"""
 
 
     # information's

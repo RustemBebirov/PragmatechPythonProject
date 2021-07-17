@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Blog, Tag, Blog_category, Blog_comment, Contact, Order, Order_Comment,Teacher,Teacher_Comment,Course, Course_category,Course_Comment,Event
+from .models import Blog, Tag, Blog_category, Blog_comment, Contact, Order, Order_Comment,Teacher,Teacher_Comment,Course, Course_category,Course_Comment,Event,Curriculum
 
 # Register your models here.
 # blog model registration
