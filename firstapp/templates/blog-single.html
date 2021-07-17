@@ -67,7 +67,7 @@
                                    <h3>Comment ({{blog.comment_blog.count}})</h3>
                                </div>  <!-- title -->
                                <ul>
-                                    {% for comment in blog_comments %}
+                                {% for comment in blog_comments %}
                                    <li>
                                        <div class="comment">
                                            <div class="comment-author">
@@ -88,15 +88,17 @@
                                         </div> <!-- comment -->
                             
                                    </li>
-                                    {% endfor %}
+                                {% endfor %}
                                </ul>
                                <div class="title pt-45 pb-25">
                                    <h3>Leave a comment</h3>
                                </div> <!-- title -->
                                <div class="comment-form">
+                                
                                    <form action="#" method="POST">
                                     {% csrf_token %}
                                        <div class="row">
+                                        
                                            <div class="col-md-6">
                                                <div class="form-single">
                                                    {{form.full_name}}
