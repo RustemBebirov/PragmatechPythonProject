@@ -100,10 +100,10 @@ class Blog_comment(models.Model):
     # relation's
     # author = models.ForeignKey(User, verbose_name='Author', on_delete=models.CASCADE, db_index=True, related_name='comments')
     blog = models.ForeignKey('Blog', verbose_name='Blog', related_name='comment_blog',db_index=True, on_delete=CASCADE)
-    # parent = models.ForeignKey("self", null=True, blank=True, on_delete=CASCADE)
+    parent = models.ForeignKey("self", null=True, blank=True, on_delete=CASCADE)
 
     # information's
-    full_name = models.CharField('FullName',max_length=127)
+    author = models.CharField('FullName',max_length=127)
     email = models.EmailField("E-mail",max_length=127)
     content = models.TextField("Content",)
 
@@ -117,7 +117,7 @@ class Blog_comment(models.Model):
         ordering = ('-created_at',)
 
     def __str__(self) -> str:
-        return f'  {self.blog}  yazilan comment'
+        return f'  {self.blog}a {self.full_name} terefinden  yazilan comment'
 
 # Blog model end
 
@@ -129,6 +129,7 @@ class Order(models.Model):
     # information's
     title = models.CharField('Title',max_length=127)
     price = models.CharField('Price',max_length=127)
+    sale = models.CharField('Sale price',max_length=127,blank=True,null=True)
     short_description = models.CharField('Short Description',max_length=127)
     description = models.TextField('Description')
     seller = models.CharField('Seller',max_length=127)
@@ -270,6 +271,7 @@ class Course(models.Model):
     """this table show Order comment information"""
     title = models.CharField('Title',max_length=127)
     price = models.CharField("Price", max_length=127)
+    sale = models.CharField("Sale Price",max_length=127,blank=True,null=True)
     image = models.ImageField("Image",upload_to='course_images')
     summery = models.CharField("Summery", max_length=127)
     requrements = models.CharField("Requrements", max_length=127,blank=True,null=True)
@@ -405,7 +407,9 @@ class Event(models.Model):
 
     def get_absolute_url(self):
         return reverse('firstapp:events-single',args=([self.id]))
-    
+
+
+
 class Contact(models.Model):
     """this table show contact information"""
 

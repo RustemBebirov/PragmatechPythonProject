@@ -50,8 +50,9 @@
                         
                         <div class="courses-search float-right">
                             <form action="#">
-                                <input type="text" placeholder="Search">
-                                <button type="button"><i class="fa fa-search"></i></button>
+                                {% csrf_token %}
+                                <input type="text" placeholder="Search" name="keyword">
+                                <button type="submit"><i class="fa fa-search"></i></button>
                             </form>
                         </div> <!-- courses search -->
                     </div> <!-- courses top search -->
@@ -60,6 +61,7 @@
             <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="courses-grid" role="tabpanel" aria-labelledby="courses-grid-tab">
                     <div class="row">
+                        {% if course %}
                         {% for course in course %}
                         <div class="col-lg-4 col-md-6">
                             <div class="single-course mt-30">
@@ -68,7 +70,7 @@
                                         <img src="{{course.image.url}}" alt="Course">
                                     </div>
                                     <div class="price">
-                                        <span>{{course.price}}</span>
+                                        <span>${{course.price}}</span>
                                     </div>
                                 </div>
                                 <div class="cont">
@@ -99,10 +101,19 @@
                             </div> <!-- single course -->
                         </div>
                         {% endfor %}
+                        {% else %}
+                        <div class="col-lg-12 col-md-12">
+                            <div class="alert alert-danger mt-30 text-center" role="alert">
+                                Course is not find
+                            </div>
+                        </div>
+                        
+                        {% endif %}
                     </div> <!-- row -->
                 </div>
                 <div class="tab-pane fade" id="courses-list" role="tabpanel" aria-labelledby="courses-list-tab">
                     <div class="row">
+                        {% if course %}
                         {% for course in course %}
                         <div class="col-lg-12">
                             <div class="single-course mt-30">
@@ -113,7 +124,7 @@
                                                 <img src="{{course.image.url}}" alt="Course">
                                             </div>
                                             <div class="price">
-                                                <span>{{course.price}}</span>
+                                                <span>${{course.price}}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -148,6 +159,14 @@
                             </div> <!-- single course -->
                         </div>
                         {% endfor %}
+                        {% else %}
+                        <div class="col-lg-12 col-md-12">
+                            <div class="alert alert-danger mt-30 text-center" role="alert">
+                                Course is not find
+                            </div>
+                        </div>
+
+                        {% endif %}
                     </div> <!-- row -->
                 </div>
             </div> <!-- tab content -->

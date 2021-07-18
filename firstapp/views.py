@@ -10,10 +10,9 @@ from .forms import ContactForm, BlogCommentForm
 
 def index(request):
     courses = Course.objects.all()[:4]
-    salam ='salam'
     context = {
         'courses' : courses,
-        'salam' : salam
+        
     }
     return render(request, 'index.html', context)
 
@@ -40,6 +39,19 @@ def blog(request):
     return render(request, 'blog.html',context)
 
 def blog_single(request,slug):
+
+    keyword = request.GET.get('keyword')
+
+    if keyword:
+        blogs = Blog.objects.filter(title__icontains = keyword)
+        blog_categories = Blog_category.objects.all()
+        context = {
+        'blogs' : blogs,
+        'categories' : blog_categories,
+        }
+        return render(request,'blog.html',context)
+
+
     # blog = Blog.objects.get(id=id)
     blog = get_object_or_404(Blog, slug=slug)
     blog_categories = Blog_category.objects.all()
@@ -112,6 +124,14 @@ def teachers_single(request,id):
     return render(request, 'teachers-single.html', context)
 
 def courses(request):
+    keyword = request.GET.get('keyword')
+
+    if keyword:
+        course = Course.objects.filter(title__icontains = keyword)
+        context = {
+        'course' : course,
+        }
+        return render(request,'courses.html',context)
     course = Course.objects.all()
     context = {
         'course' : course
