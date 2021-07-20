@@ -82,9 +82,9 @@ class BlogCommentForm(forms.Form):
 
 
 class BlogCommentFormReply(forms.Form):
-    full_name = forms.CharField(max_length=127,label='Your Name',widget=forms.TextInput(attrs={'class': 'form-input','placeholder':'Your Name'}))
-    email = forms.EmailField(max_length=127,label='Your Email',widget=forms.EmailInput(attrs={'class': 'form-input','placeholder':'Your Email'}))
-    content = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-input','placeholder':'Comment'}))
+    full_name = forms.CharField(max_length=127,label='Your Name',widget=forms.TextInput(attrs={'class': 'form-input'}))
+    email = forms.EmailField(max_length=127,label='Your Email',widget=forms.EmailInput(attrs={'class': 'form-input'}))
+    content = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-input'}))
 
     def clean(self):
         full_name = self.cleaned_data.get('full_name')

@@ -4,7 +4,7 @@ from django.forms import forms
 from django.forms.forms import Form
 from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse, request
-from .models import Blog, Blog_category ,Blog_comment, Contact ,Order,Order_Comment, Order_category,Event,Tag,Teacher,Teacher_Comment,Course,Course_category,Course_Comment
+from .models import Blog, Blog_category ,Blog_comment, Blog_comment_reply, Contact ,Order,Order_Comment, Order_category,Event,Tag,Teacher,Teacher_Comment,Course,Course_category,Course_Comment
 from .forms import ContactForm, BlogCommentForm,BlogCommentFormReply
 # Create your views here.
 
@@ -58,23 +58,15 @@ def blog_single(request,slug):
     blog_comments = blog.comment_blog.all()
     form1 = BlogCommentForm()
     form2 = BlogCommentFormReply()
+
     if request.method == 'POST':
         form1 = BlogCommentForm(request.POST)
-        form2 = BlogCommentFormReply(request.POST)
         if form1.is_valid():
             full_name = form1.cleaned_data.get('full_name')
             email = form1.cleaned_data.get('email')
             content = form1.cleaned_data.get('content')
             newComment = Blog_comment(author = full_name, email = email, content=content ,blog= blog)
             newComment.save()
-            messages.success(request,'Your comment is add')
-            return redirect(blog.get_absolute_url())
-        elif form2.is_valid():
-            full_name = form2.cleaned_data.get('full_name')
-            email = form2.cleaned_data.get('email')
-            content = form2.cleaned_data.get('content')
-            reply = BlogCommentFormReply(author = full_name, email = email, content=content ,comment=blog_comments)
-            reply.save()
             messages.success(request,'Your comment is add')
             return redirect(blog.get_absolute_url())
 
@@ -88,6 +80,24 @@ def blog_single(request,slug):
     }
 
     return render(request, 'blog-single.html', context)
+
+def blog_comment_reply(request,id):
+    comment = get_object_or_404(Blog_comment, id=id)
+    form = BlogCommentFormReply()
+    blog = get_object_or_404(Blog, slug=comment.blog.slug)
+    if request.method == 'POST':
+        form = BlogCommentFormReply(request.POST)
+        if form.is_valid():
+            full_name = form.cleaned_data.get('full_name')
+            email = form.cleaned_data.get('email')
+            content = form.cleaned_data.get('content')
+            newComment = Blog_comment_reply(author = full_name, email = email, content=content ,comment= comment)
+            newComment.save()
+            messages.success(request,'Your comment is add')
+            return redirect(blog.get_absolute_url())
+
+
+
 
 def shop(request):
     orders = Order.objects.all()

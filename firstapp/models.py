@@ -117,7 +117,10 @@ class Blog_comment(models.Model):
         ordering = ('-created_at',)
 
     def __str__(self) -> str:
-        return f'  {self.blog} {self.author} terefinden  yazilan comment'
+        return f'  {self.blog}  {self.author} terefinden   yazilan comment'
+
+    def get_absolute_url(self):
+        return reverse('firstapp:blog_comment_reply',args=([self.id]))
 
 
 class Blog_comment_reply(models.Model):
@@ -139,7 +142,7 @@ class Blog_comment_reply(models.Model):
         ordering = ('-created_at',)
 
     def __str__(self) -> str:
-        return f'  {self.comment}a {self.author} terefinden  yazilan comment'
+        return f'  {self.comment} e {self.content}  yazilan comment'
 
 # Blog model end
 

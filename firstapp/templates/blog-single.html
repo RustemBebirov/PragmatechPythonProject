@@ -9,7 +9,7 @@
 
 <body>
     {% extends 'base.html '%}
-    {% load static %}
+    {% load static crispy_forms_tags %}
 
     {% block content %}
     <!--====== PAGE BANNER PART START ======-->
@@ -70,7 +70,7 @@
                                <ul>
                                 {% for comment in blog_comments %}
                                 
-                                <li>
+                                <li style="display: block;">
                                     <div class="comment">
                                         <div class="comment-author">
                                              <div class="author-thum">
@@ -84,6 +84,10 @@
                                          <div class="comment-description pt-20">
                                              <p>{{comment.content}}</p>
                                          </div>
+                                         
+                                        <div class="comment-description pt-20">
+                                            <p>{{comment.replies.content}}</p>
+                                        </div>
                                          <div class="comment-replay">
                                             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ModalLoginForm">
                                                 Reply
@@ -91,6 +95,7 @@
                                          </div>
                                      </div> <!-- comment -->
                                 </li>
+                                
                                 <!-- Modal HTML Markup -->
                                 <div id="ModalLoginForm" class="modal fade">
                                     <div class="modal-dialog" role="document">
@@ -99,26 +104,16 @@
                                                 <h1 class="modal-title">Reply</h1>
                                             </div>
                                             <div class="modal-body">
-                                                <form role="form" method="POST" action="">
+                                                <form role="form" method="POST" action="{% url 'firstapp:blog_comment_reply' comment.id %}">
                                                     {% csrf_token %}
                                                     <input type="hidden" name="_token" value="">
                                                     <div class="form-group">
             
                                                         <div>
-                                                            {{form2.full_name}}
+                                                            {{form2|crispy}}
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        
-                                                        <div>
-                                                            {{form2.email}}
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div>
-                                                            {{form2.content}}
-                                                        </div>
-                                                    </div>
+                                                    
                                                     <div class="form-group">
                                                         <div>
                                                             <button type="submit" class="btn btn-success">Reply</button>
@@ -207,32 +202,7 @@
                                                </div> <!-- single post -->
                                             </a>
                                        </li>
-                                       <li>
-                                            <a href="#">
-                                                <div class="single-post">
-                                                   <div class="thum">
-                                                       <img src="images/blog/blog-post/bp-2.jpg" alt="Blog">
-                                                   </div>
-                                                   <div class="cont">
-                                                       <h6>How to build a game with java</h6>
-                                                       <span>10 Dec 2018</span>
-                                                   </div>
-                                               </div> <!-- single post -->
-                                            </a>
-                                       </li>
-                                       <li>
-                                            <a href="#">
-                                                <div class="single-post">
-                                                   <div class="thum">
-                                                       <img src="images/blog/blog-post/bp-1.jpg" alt="Blog">
-                                                   </div>
-                                                   <div class="cont">
-                                                       <h6>Basic accounting from primary</h6>
-                                                       <span>07 Dec 2018</span>
-                                                   </div>
-                                               </div> <!-- single post -->
-                                            </a>
-                                       </li>
+                                      
                                    </ul>
                                </div> <!-- sidebar post -->
                            </div>
