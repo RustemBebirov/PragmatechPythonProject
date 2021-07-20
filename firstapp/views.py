@@ -5,7 +5,7 @@ from django.forms.forms import Form
 from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse, request
 from .models import Blog, Blog_category ,Blog_comment, Contact ,Order,Order_Comment, Order_category,Event,Tag,Teacher,Teacher_Comment,Course,Course_category,Course_Comment
-from .forms import ContactForm, BlogCommentForm
+from .forms import ContactForm, BlogCommentForm,BlogCommentFormReply
 # Create your views here.
 
 def index(request):
@@ -56,22 +56,33 @@ def blog_single(request,slug):
     blog = get_object_or_404(Blog, slug=slug)
     blog_categories = Blog_category.objects.all()
     blog_comments = blog.comment_blog.all()
-    form = BlogCommentForm()
+    form1 = BlogCommentForm()
+    form2 = BlogCommentFormReply()
     if request.method == 'POST':
-        form = BlogCommentForm(request.POST)
-        if form.is_valid():
-            full_name = form.cleaned_data.get('full_name')
-            email = form.cleaned_data.get('email')
-            content = form.cleaned_data.get('content')
-            newComment = Blog_comment(full_name = full_name, email = email, content=content ,blog= blog)
+        form1 = BlogCommentForm(request.POST)
+        form2 = BlogCommentFormReply(request.POST)
+        if form1.is_valid():
+            full_name = form1.cleaned_data.get('full_name')
+            email = form1.cleaned_data.get('email')
+            content = form1.cleaned_data.get('content')
+            newComment = Blog_comment(author = full_name, email = email, content=content ,blog= blog)
             newComment.save()
+            messages.success(request,'Your comment is add')
+            return redirect(blog.get_absolute_url())
+        elif form2.is_valid():
+            full_name = form2.cleaned_data.get('full_name')
+            email = form2.cleaned_data.get('email')
+            content = form2.cleaned_data.get('content')
+            reply = BlogCommentFormReply(author = full_name, email = email, content=content ,comment=blog_comments)
+            reply.save()
             messages.success(request,'Your comment is add')
             return redirect(blog.get_absolute_url())
 
     context = {
         'blog' : blog,
         'categories' : blog_categories,
-        'form' : form,
+        'form1' : form1,
+        'form2' : form2,
         'blog_comments' : blog_comments,
         
     }

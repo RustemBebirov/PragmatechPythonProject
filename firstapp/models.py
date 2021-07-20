@@ -100,7 +100,7 @@ class Blog_comment(models.Model):
     # relation's
     # author = models.ForeignKey(User, verbose_name='Author', on_delete=models.CASCADE, db_index=True, related_name='comments')
     blog = models.ForeignKey('Blog', verbose_name='Blog', related_name='comment_blog',db_index=True, on_delete=CASCADE)
-    parent = models.ForeignKey("self", null=True, blank=True, on_delete=CASCADE)
+    # parent = models.ForeignKey("self", null=True, blank=True, on_delete=CASCADE,related_name='reply')
 
     # information's
     author = models.CharField('FullName',max_length=127)
@@ -117,7 +117,29 @@ class Blog_comment(models.Model):
         ordering = ('-created_at',)
 
     def __str__(self) -> str:
-        return f'  {self.blog}a {self.full_name} terefinden  yazilan comment'
+        return f'  {self.blog} {self.author} terefinden  yazilan comment'
+
+
+class Blog_comment_reply(models.Model):
+    """ in this table you can show comment reply information"""
+    comment = models.ForeignKey(Blog_comment,on_delete=models.CASCADE,related_name='replies')
+   
+    # information's 
+    author = models.CharField('FullName',max_length=127)
+    email = models.EmailField("E-mail",max_length=127)
+    content = models.TextField("Content",)
+
+    # moderation's
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Blog Comment reply'
+        verbose_name_plural = 'Blog Comments reply' 
+        ordering = ('-created_at',)
+
+    def __str__(self) -> str:
+        return f'  {self.comment}a {self.author} terefinden  yazilan comment'
 
 # Blog model end
 

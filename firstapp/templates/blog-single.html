@@ -4,6 +4,7 @@
 <head>
     <!--====== Title ======-->
     <title>Edubin - LMS Education HTML Template</title>
+    
 </head>
 
 <body>
@@ -68,15 +69,15 @@
                                </div>  <!-- title -->
                                <ul>
                                 {% for comment in blog_comments %}
-                                {% if comment.parent %}
+                                
                                 <li>
                                     <div class="comment">
                                         <div class="comment-author">
                                              <div class="author-thum">
-                                                 <img src="{% static 'assets/images/review/r-1.jpg' %}" alt="Reviews">
+                                                 <img src="{% static 'assets/images/review/r-3.jpg' %}" alt="Reviews">
                                              </div>
                                              <div class="comment-name">
-                                                 <h6>{{comment.full_name}}</h6>
+                                                 <h6>{{comment.author}}</h6>
                                                  <span>{{comment.created_at}}</span>
                                              </div>
                                          </div>
@@ -84,55 +85,54 @@
                                              <p>{{comment.content}}</p>
                                          </div>
                                          <div class="comment-replay">
-                                             <a href="#">Reply</a>
-                                         </div>
-                                     </div> <!-- comment -->
-                                     
-                                     <ul class="replay">
-                                        <li>
-                                            <div class="comment">
-                                                <div class="comment-author">
-                                                     <div class="author-thum">
-                                                         <img src="{% static 'assets/images/review/r-2.jpg' %}" alt="Reviews">
-                                                     </div>
-                                                     <div class="comment-name">
-                                                         <h6>Humayun Ahmed</h6>
-                                                         <span>April 03, 2019</span>
-                                                     </div>
-                                                 </div>
-                                                 <div class="comment-description pt-20">
-                                                     <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
-                                                 </div>
-                                                 <div class="comment-replay">
-                                                     <a href="#">Reply</a>
-                                                 </div>
-                                             </div> <!-- comment -->
-                                        </li>
-                                        
-                                    </ul>
-                                    
-                                </li>
-                                {% else %}
-                                <li>
-                                    <div class="comment">
-                                        <div class="comment-author">
-                                             <div class="author-thum">
-                                                 <img src="images/review/r-3.jpg" alt="Reviews">
-                                             </div>
-                                             <div class="comment-name">
-                                                 <h6>{{comment.full_name}}</h6>
-                                                 <span>April 03, 2019</span>
-                                             </div>
-                                         </div>
-                                         <div class="comment-description pt-20">
-                                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which.</p>
-                                         </div>
-                                         <div class="comment-replay">
-                                             <a href="#">Reply</a>
+                                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ModalLoginForm">
+                                                Reply
+                                            </button>
                                          </div>
                                      </div> <!-- comment -->
                                 </li>
-                                {% endif %}
+                                <!-- Modal HTML Markup -->
+                                <div id="ModalLoginForm" class="modal fade">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title">Reply</h1>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form role="form" method="POST" action="">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="_token" value="">
+                                                    <div class="form-group">
+            
+                                                        <div>
+                                                            {{form2.full_name}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        
+                                                        <div>
+                                                            {{form2.email}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div>
+                                                            {{form2.content}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div>
+                                                            <button type="submit" class="btn btn-success">Reply</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                </div><!-- /.modal -->
+
+                                    <!-- reply-form -->
+                                
                                 {% endfor %}
                                </ul>
                                <div class="title pt-45 pb-25">
@@ -146,17 +146,17 @@
                                         
                                            <div class="col-md-6">
                                                <div class="form-single">
-                                                   {{form.full_name}}
+                                                   {{form1.full_name}}
                                                </div> <!-- form single -->
                                            </div>
                                            <div class="col-md-6">
                                                <div class="form-single">
-                                                   {{form.email}}
+                                                   {{form1.email}}
                                                </div> <!-- form single -->
                                            </div>
                                            <div class="col-md-12">
                                                <div class="form-single">
-                                                   {{form.content}}
+                                                   {{form1.content}}
                                                </div> <!-- form single -->
                                            </div>
                                            <div class="col-md-12">

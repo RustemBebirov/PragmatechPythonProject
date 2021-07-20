@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.forms import widgets
-from .models import Contact
+from .models import Contact,Blog_comment_reply
 
 class ContactForm(forms.Form):
     full_name = forms.CharField(max_length=127,label='Your Name',widget=forms.TextInput(attrs={'class': 'form-input','placeholder':'Your Name'}))
@@ -61,7 +61,7 @@ class ContactForm(forms.Form):
         
 
 class BlogCommentForm(forms.Form):
-
+    
     full_name = forms.CharField(max_length=127,label='Your Name',widget=forms.TextInput(attrs={'class': 'form-input','placeholder':'Your Name'}))
     email = forms.EmailField(max_length=127,label='Your Email',widget=forms.EmailInput(attrs={'class': 'form-input','placeholder':'Your Email'}))
     content = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-input','placeholder':'Comment'}))
@@ -81,4 +81,20 @@ class BlogCommentForm(forms.Form):
         return values
 
 
+class BlogCommentFormReply(forms.Form):
+    full_name = forms.CharField(max_length=127,label='Your Name',widget=forms.TextInput(attrs={'class': 'form-input','placeholder':'Your Name'}))
+    email = forms.EmailField(max_length=127,label='Your Email',widget=forms.EmailInput(attrs={'class': 'form-input','placeholder':'Your Email'}))
+    content = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-input','placeholder':'Comment'}))
 
+    def clean(self):
+        full_name = self.cleaned_data.get('full_name')
+        email = self.cleaned_data.get('email')
+        content = self.cleaned_data.get('content')
+
+
+        values ={
+            'full_name' : full_name,
+            'email' : email,
+            'content' : content,
+        }
+        return values
