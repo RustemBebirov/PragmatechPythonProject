@@ -18,11 +18,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-banner-cont">
-                        <h2>Shop</h2>
+                        <h2>Liked Orders</h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{% url 'firstapp:index' %}">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                                <li class="breadcrumb-item active" aria-current="page">Liked Orders</li>
                             </ol>
                         </nav>
                     </div> <!-- page banner cont -->
@@ -75,20 +75,21 @@
                                     <div class="add-cart">
                                         <ul>
                                             <li>
-                                                <form id="cart_form" method="POST" action="{% url 'firstapp:add_order' %}">
+                                                <form id="cart_form" method="POST" >
                                                     {% csrf_token %}
                                                     <input type="hidden" name="order_id" value="{{order.id}}">
-
+                                                    <!-- Your Form -->    
                                                     <a href="javascript:{}" onclick="document.getElementById('cart_form').submit(); return false;"><i class="fa fa-shopping-cart"></i></a>
                                                 </form>
                                             </li>
-                                            <li>
+                                            <!-- <li>
                                                 <form id="like_form" method="POST" action="{% url 'firstapp:like_order' %}">
                                                     {% csrf_token %}
-                                                    <input type="hidden" name="order_id" value="{{order.id}}">  
+                                                    <input type="hidden" name="order_id" value="{{order.id}}">
+                                                    
                                                     <a href="javascript:{}" onclick="document.getElementById('like_form').submit(); return false;"><i class="fa fa-heart-o"></i></a>
                                                 </form>
-                                            </li>
+                                            </li> -->
                                             
                                                 <!-- <form action="{% url 'firstapp:like_order' %}" method="POST">
                                                     {% csrf_token %}
@@ -130,21 +131,8 @@
                                             <img src="{{order.image.url}}" alt="Publication">
                                             <div class="add-cart">
                                                 <ul>
-                                                    <li>
-                                                        <form id="cart_form" method="POST" action="{% url 'firstapp:add_order' %}">
-                                                            {% csrf_token %}
-                                                            <input type="hidden" name="order_id" value="{{order.id}}">
-        
-                                                            <a href="javascript:{}" onclick="document.getElementById('cart_form').submit(); return false;"><i class="fa fa-shopping-cart"></i></a>
-                                                        </form>
-                                                    </li>
-                                                    <li>
-                                                        <form id="like_form" method="POST" action="{% url 'firstapp:like_order' %}">
-                                                            {% csrf_token %}
-                                                            <input type="hidden" name="order_id" value="{{order.id}}">  
-                                                            <a href="javascript:{}" onclick="document.getElementById('like_form').submit(); return false;"><i class="fa fa-heart-o"></i></a>
-                                                        </form>
-                                                    </li>
+                                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>

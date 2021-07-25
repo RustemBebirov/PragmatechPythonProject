@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL ='user.User'
 
 # Application definition
 
@@ -145,3 +146,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+#registration
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend" 
+EMAIL_HOST = "smtp.gmail.com" 
+EMAIL_USE_TLS = True 
+EMAIL_PORT = 587 
+EMAIL_HOST_USER = 'rustembebirov96@gmail.com' 
+EMAIL_HOST_PASSWORD = 'gtsuwonnqxbrcamr'

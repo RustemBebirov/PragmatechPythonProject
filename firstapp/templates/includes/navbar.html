@@ -44,10 +44,11 @@
                             </div> <!-- social -->
                             <div class="login-register">
                                 <ul>
-                                    {% if request.user.is_authenticated %}
-                                    <li><a href="">{{request.user.username}}</a></li>
+                                    {% if user.is_authenticated %}
+                                    <li><a href="{% url 'user:logout' %}">{{user.email}}</a></li>
                                     <li><a href="{% url 'user:logout' %}">Logout</a></li>
                                     {% else %}
+                                    
                                     <li><a href="{% url 'user:login' %}">Login</a></li>
                                     <li><a href="{% url 'user:register' %}">Register</a></li>
                                     {% endif %}
@@ -120,6 +121,7 @@
                                         <ul class="sub-menu">
                                             <li><a href="{% url 'firstapp:shop' %}">Shop</a></li>
                                             <li><a href="">Shop Single</a></li>
+                                            <li><a href="{% url 'firstapp:like_orders' %}">Liked Orders</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">
@@ -133,7 +135,7 @@
                             <div class="right-icon text-right">
                                 <ul>
                                     <li><a href="javascript:void(0)" id="search"><i class="fa fa-search"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-bag"></i><span>0</span></a></li>
+                                    <li><a href="{% url 'firstapp:add_orders' %}"><i class="fa fa-shopping-bag"></i><span>0</span></a></li>
                                 </ul>
                             </div> <!-- right icon -->
                         </nav> <!-- nav -->
