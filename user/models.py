@@ -14,5 +14,6 @@ class User(AbstractUser):
     fullname = models.CharField('FullName',null=True, max_length=127)
     category = models.BooleanField('Category',choices=CATEGORY_CHOICES,default=True)
 
+
     USERNAME_FIELD= 'email'
-    REQUIRED_FIELDS = ['']
+    REQUIRED_FIELDS = ['username']

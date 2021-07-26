@@ -10,12 +10,12 @@ from django.contrib.auth.forms import UserCreationForm
 
 class RegistrationForm(UserCreationForm):
 
-    password1 = forms.CharField(label='Password',strip=False,widget=forms.PasswordInput(attrs={'autocomplete':'new-password',
+    password1 = forms.CharField(label='Password',widget=forms.PasswordInput(attrs={'autocomplete':'new-password',
     'class':'form-control','placeholder':'Password'}),
     
     )
    
-    password2 = forms.CharField(label='Confirm',strip=False,widget=forms.PasswordInput(attrs={'autocomplete':'new-password',
+    password2 = forms.CharField(label='Confirm',widget=forms.PasswordInput(attrs={'autocomplete':'new-password',
     'class':'form-control','placeholder':'Confirm Password'}),
     
     )
