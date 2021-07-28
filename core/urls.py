@@ -29,7 +29,7 @@ urlpatterns = [
     path('', include('firstapp.urls', namespace='firstapp')),
     path('user/', include('user.urls', namespace='user')),
     path('pages/', include('pages.urls', namespace='pages')),
-    path('order/', include('shop.urls', namespace='orders')),
+    path('orders/', include('shop.urls', namespace='orders')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.index_title ='Edubin'

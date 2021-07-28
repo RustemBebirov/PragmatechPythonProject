@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls.base import reverse
 
 # Create your models here.
 
@@ -36,7 +37,7 @@ class Order(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('firstapp:shop-single',args=([self.id]))
+        return reverse('orders:shop-single',args=([self.pk]))
 
 
 class Order_Comment(models.Model):

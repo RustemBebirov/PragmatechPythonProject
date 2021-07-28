@@ -74,7 +74,7 @@
                                     <img src="{{order.image.url}}" alt="Publication">
                                     <div class="add-cart">
                                         <ul>
-                                            <!-- <li>
+                                            <li>
                                                 <form id="cart_form" method="POST" action="{% url 'orders:add_order' %}">
                                                     {% csrf_token %}
                                                     <input type="hidden" name="order_id" value="{{order.id}}">
@@ -88,16 +88,8 @@
                                                     <input type="hidden" name="order_id" value="{{order.id}}">  
                                                     <a href="javascript:{}" onclick="document.getElementById('like_form').submit(); return false;"><i class="fa fa-heart-o"></i></a>
                                                 </form>
-                                            </li> -->
-                                            
-                                                <!-- <form action="{% url 'firstapp:like_order' %}" method="POST">
-                                                    {% csrf_token %}
-                                                    <input type="hidden" name="order_id" value="{{order.id}}">
-                                                    <input type="submit" value="like">
-                                                </form> -->
-                                                
-                                            
-                                            
+                                            </li>
+
                                         </ul>
                                     </div>
                                 </div>
@@ -130,7 +122,7 @@
                                             <img src="{{order.image.url}}" alt="Publication">
                                             <div class="add-cart">
                                                 <ul>
-                                                    <!-- <li>
+                                                    <li>
                                                         <form id="cart_form" method="POST" action="{% url 'orders:add_order' %}">
                                                             {% csrf_token %}
                                                             <input type="hidden" name="order_id" value="{{order.id}}">
@@ -144,7 +136,7 @@
                                                             <input type="hidden" name="order_id" value="{{order.id}}">  
                                                             <a href="javascript:{}" onclick="document.getElementById('like_form').submit(); return false;"><i class="fa fa-heart-o"></i></a>
                                                         </form>
-                                                    </li> -->
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>

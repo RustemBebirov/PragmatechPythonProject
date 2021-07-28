@@ -1,15 +1,11 @@
 from io import DEFAULT_BUFFER_SIZE
 from django.contrib import messages
-from django.contrib.auth.models import User
-from django.forms import forms
-from django.forms.forms import Form
 from django.shortcuts import get_object_or_404, redirect, render
-from django.http import HttpResponse, request, response
 from .models import Blog, Blog_category ,Blog_comment, Blog_comment_reply, Contact ,Event,Tag,Teacher,Teacher_Comment,Course,Course_category,Course_Comment
 from .forms import ContactForm, BlogCommentForm,BlogCommentFormReply
-from django.views.generic import ListView,DetailView
 
-from firstapp import models
+
+
 
 # Create your views here.
 
@@ -101,34 +97,7 @@ def blog_comment_reply(request,id):
             messages.success(request,'Your comment is add')
             return redirect(blog.get_absolute_url())
 
-#blog view end
 
-#order view start
-# def shop(request):
-#     orders = Order.objects.all()
-#     context = {
-#         'orders' : orders
-#     }
-#     return render(request, 'shop.html',context)
-
-
-
-
-
-
-
-# def shop_single(request,id):
-#     order = get_object_or_404(Order, id=id)
-#     orders = Order.objects.order_by('-created_at')[:4]
-    
-#     context = {
-#         'order' : order,
-#         'orders' : orders
-#     }
-#     return render(request, 'shop-single.html', context)
-
-
-# order view end
 
 def events(request):
     lesson_events = Event.objects.all()
