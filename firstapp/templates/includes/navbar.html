@@ -82,10 +82,10 @@
                                     <li class="nav-item">
                                         <a href="#">Pages</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{% url 'firstapp:about' %}">About Us</a></li>
-                                            <li><a href="{% url 'firstapp:gallery' %}">Gallery</a></li>
-                                            <li><a href="{% url 'firstapp:policy' %}">Privacy Policy</a></li>
-                                            <li><a href="{% url 'firstapp:faq' %}">FAQ</a></li>
+                                            <li><a href="{% url 'pages:about' %}">About Us</a></li>
+                                            <li><a href="{% url 'pages:gallery' %}">Gallery</a></li>
+                                            <li><a href="{% url 'pages:privacy' %}">Privacy Policy</a></li>
+                                            <li><a href="{% url 'pages:faq' %}">FAQ</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">
@@ -117,11 +117,11 @@
                                         </ul>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{% url 'firstapp:shop' %}">Shop</a>
+                                        <a href="{% url 'orders:shop' %}">Shop</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{% url 'firstapp:shop' %}">Shop</a></li>
+                                            <li><a href="{% url 'orders:shop' %}">Shop</a></li>
                                             <li><a href="">Shop Single</a></li>
-                                            <li><a href="{% url 'firstapp:like_orders' %}">Liked Orders</a></li>
+                                            <li><a href="{% url 'orders:like_orders' %}">Liked Orders</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">
@@ -135,7 +135,7 @@
                             <div class="right-icon text-right">
                                 <ul>
                                     <li><a href="javascript:void(0)" id="search"><i class="fa fa-search"></i></a></li>
-                                    <li><a href="{% url 'firstapp:add_orders' %}"><i class="fa fa-shopping-bag"></i><span>0</span></a></li>
+                                    <li><a href="{% url 'orders:add_orders' %}"><i class="fa fa-shopping-bag"></i><span>0</span></a></li>
                                 </ul>
                             </div> <!-- right icon -->
                         </nav> <!-- nav -->

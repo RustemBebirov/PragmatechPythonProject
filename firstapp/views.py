@@ -1,12 +1,15 @@
+from io import DEFAULT_BUFFER_SIZE
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.forms import forms
 from django.forms.forms import Form
 from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse, request, response
-from .models import Blog, Blog_category ,Blog_comment, Blog_comment_reply, Contact ,Order,Order_Comment, Order_category,Event,Tag,Teacher,Teacher_Comment,Course,Course_category,Course_Comment
+from .models import Blog, Blog_category ,Blog_comment, Blog_comment_reply, Contact ,Event,Tag,Teacher,Teacher_Comment,Course,Course_category,Course_Comment
 from .forms import ContactForm, BlogCommentForm,BlogCommentFormReply
-from django.template.loader import render_to_string
+from django.views.generic import ListView,DetailView
+
+from firstapp import models
 
 # Create your views here.
 
@@ -101,74 +104,30 @@ def blog_comment_reply(request,id):
 #blog view end
 
 #order view start
-def shop(request):
-    orders = Order.objects.all()
-    context = {
-        'orders' : orders
-    }
-    return render(request, 'shop.html',context)
+# def shop(request):
+#     orders = Order.objects.all()
+#     context = {
+#         'orders' : orders
+#     }
+#     return render(request, 'shop.html',context)
 
-def shop_single(request,id):
-    order = get_object_or_404(Order, id=id)
-    orders = Order.objects.order_by('-created_at')[:4]
+
+
+
+
+
+
+# def shop_single(request,id):
+#     order = get_object_or_404(Order, id=id)
+#     orders = Order.objects.order_by('-created_at')[:4]
     
-    context = {
-        'order' : order,
-        'orders' : orders
-    }
-    return render(request, 'shop-single.html', context)
+#     context = {
+#         'order' : order,
+#         'orders' : orders
+#     }
+#     return render(request, 'shop-single.html', context)
 
-def like_order(request):
-    if request.method == 'POST':
-        liked_orders = request.COOKIES.get('liked_orders', '')
-        order_id = request.POST.get('order_id')
-    html = render_to_string('successfuly_added.html')
-    response = HttpResponse(html)
-    if order_id not in liked_orders.split(','):
-        response.set_cookie("liked_orders",f'{liked_orders}{order_id},')
-    return response
 
-def like_order_page(request):
-    like_orders = request.COOKIES.get('liked_orders','')
-    liked_order_ids=[]
-    for i in like_orders:
-        try:
-            j=int(i)
-            liked_order_ids.append(j)
-        except:
-            print('None')
-
-    orders = Order.objects.filter(id__in=liked_order_ids)
-    context ={
-        'orders': orders
-    }
-    return render(request,'liked_orders.html',context)
-
-def add_order(request):
-    if request.method == 'POST':
-        add_orders = request.COOKIES.get('add_orders', '')
-        order_id = request.POST.get('order_id')
-    html = render_to_string('successfuly_added.html')
-    response = HttpResponse(html)
-    if order_id not in add_orders.split(','):
-        response.set_cookie("add_orders",f'{add_orders}{order_id},')
-    return response
-
-def add_order_page(request):
-    add_orders = request.COOKIES.get('add_orders','')
-    add_order_ids=[]
-    for i in add_orders:
-        try:
-            j=int(i)
-            add_order_ids.append(j)
-        except:
-            print('None')
-
-    orders = Order.objects.filter(id__in=add_order_ids)
-    context ={
-        'orders': orders
-    }
-    return render(request,'add_orders.html',context)
 # order view end
 
 def events(request):
@@ -221,8 +180,7 @@ def courses_single(request,id):
     }
     return render(request, 'courses-single.html', context)
 
-def gallery(request):
-    return render(request, 'gallery.html')
+
 
 def contact(request):
     form = ContactForm()
@@ -245,14 +203,7 @@ def contact(request):
     }
     return render(request, 'contact.html', context)
 
-def about(request):
-    return render(request, 'about.html')
 
-def policy(request):
-    return render(request, 'policy.html')
-
-def faq(request):
-    return render(request, 'faq.html')
 
 
 

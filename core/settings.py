@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'firstapp',
     'user',
+    'pages',
+    'shop',
     'crispy_forms',
     
 ]
@@ -144,7 +146,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-
+# Crispy form
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 #registration
