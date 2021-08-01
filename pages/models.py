@@ -4,7 +4,7 @@ from django.db import models
 
 class Gallery(models.Model):
     title = models.CharField('Title',max_length=50)
-    image = models.ImageField('Image',upload_to='images')
+    image = models.ImageField('Image',upload_to='gallery_images')
 
     # moderation's
     created_at = models.DateField(auto_now_add=True)

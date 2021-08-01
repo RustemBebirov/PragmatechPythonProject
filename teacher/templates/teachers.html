@@ -38,14 +38,14 @@
     <section id="teachers-page" class="pt-90 pb-120 gray-bg">
         <div class="container">
            <div class="row">
-               {% for teacher in teacher %}
+               {% for teacher in teachers %}
                <div class="col-lg-3 col-sm-6">
                    <div class="single-teachers mt-30 text-center">
                         <div class="image">
                             <img src="{{teacher.image.url}}" alt="Teachers">
                         </div>
                         <div class="cont">
-                            <a href="{{teacher.get_absolute_url}}"><h6>{{teacher.full_name}}</h6></a>
+                            <a href="{{teacher.get_absolute_url}}">{{teacher.fullname}}<h6></h6></a>
                             <span>{{teacher.job}}</span>
                         </div>
                     </div> <!-- single teachers -->

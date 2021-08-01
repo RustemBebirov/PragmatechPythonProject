@@ -1,11 +1,10 @@
 from django.conf.urls import include
-from firstapp import admin
 from django.urls import path, re_path, reverse_lazy
 from user import views
+
 app_name = 'user'
 
 urlpatterns = [
-    path('', include('firstapp.urls', namespace='firstapp')),
     path('register/', views.register, name='register'),
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),

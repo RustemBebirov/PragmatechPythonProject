@@ -51,12 +51,14 @@
 
 <body>
     {% include 'includes/navbar.html' %}
+    
     {% if messages %}
         
         {% for message in messages %}
-        <div {% if message.tags %} class="aler alert-{{message.tags}} " {% endif %} style="text-align: center;">{{message}}</div>
+        <div {% if message.tags %} class="alert alert-{{message.tags}} " {% endif %} style="text-align: center;">{{message}}</div>
         {% endfor %}
-    {% endif %}
+        {% endif %}
+    
     {% block content %}
     {% endblock %}
    

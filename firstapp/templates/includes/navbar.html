@@ -45,7 +45,7 @@
                             <div class="login-register">
                                 <ul>
                                     {% if user.is_authenticated %}
-                                    <li><a href="{% url 'user:logout' %}">{{user.email}}</a></li>
+                                    <li><a href="">{{user.fullname}}</a></li>
                                     <li><a href="{% url 'user:logout' %}">Logout</a></li>
                                     {% else %}
                                     
@@ -77,7 +77,7 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item">
-                                        <a class="active" href="{% url 'firstapp:index' %}">Home</a>
+                                        <a class="" href="{% url 'firstapp:index' %}">Home</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="#">Pages</a>
@@ -89,30 +89,30 @@
                                         </ul>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{% url 'firstapp:courses' %}">Courses</a>
+                                        <a href="{% url 'teachers:courses' %}">Courses</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{% url 'firstapp:courses' %}">Courses</a></li>
+                                            <li><a href="{% url 'teachers:courses' %}">Courses</a></li>
                                             <li><a href="">Course Single</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{% url 'firstapp:events' %}">Events</a>
+                                        <a href="{% url 'teachers:events' %}">Events</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{% url 'firstapp:events' %}">Events List</a></li>
+                                            <li><a href="{% url 'teachers:events' %}">Events List</a></li>
                                             <li><a href="">Event Single</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{% url 'firstapp:teachers' %}">Teachers</a>
+                                        <a href="{% url 'teachers:teachers' %}">Teachers</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{% url 'firstapp:teachers' %}">teachers</a></li>
+                                            <li><a href="{% url 'teachers:teachers' %}">teachers</a></li>
                                             <li><a href="">teacher Single</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{% url 'firstapp:blog' %}">Blog</a>
+                                        <a href="{% url 'blogs:blog' %}">Blog</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{% url 'firstapp:blog' %}">Blog</a></li>
+                                            <li><a href="{% url 'blogs:blog' %}">Blog</a></li>
                                             <li><a href="">Blog Single</a></li>
                                         </ul>
                                     </li>

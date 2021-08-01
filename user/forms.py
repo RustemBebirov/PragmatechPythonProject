@@ -1,9 +1,5 @@
-from django.forms import fields
-from user import models
 from user.models import User
 from django import forms
-from django.forms.fields import EmailField
-from django.contrib.auth import get_user_model, password_validation
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -11,44 +7,40 @@ from django.contrib.auth.forms import UserCreationForm
 class RegistrationForm(UserCreationForm):
 
     password1 = forms.CharField(label='Password',widget=forms.PasswordInput(attrs={'autocomplete':'new-password',
-    'class':'form-control','placeholder':'Password'}),
-    
+    'class':'form-control'})
     )
    
-    password2 = forms.CharField(label='Confirm',widget=forms.PasswordInput(attrs={'autocomplete':'new-password',
-    'class':'form-control','placeholder':'Confirm Password'}),
+    password2 = forms.CharField(label='Confirm',widget=forms.PasswordInput(attrs=
+    {'autocomplete':'new-password','class':'form-control'}),
+    
     
     )
+
+    agree = forms.BooleanField(label="""I agree all statements in  <a href="/pages/privacy" class='term-service'>Terms of service</a>""")
 
     class Meta:
         model = User
-        fields = {
-            'email',
+        fields = (
             'fullname',
-            'phone',
+            'email',
             'password1',
             'password2',
             'image',
-            'category',
-
-        }
+            'agree'
+        )
         
-    widgets = {
-            'fullname' : forms.TextInput(attrs={
-                'class' : 'form-control', 'placeholder' : 'Your Name'
-            }),
-            'email' : forms.EmailInput(attrs={
-                'class' : 'form-control', 'placeholder' : 'Your Email'
-            }),
-            'phone' : forms.TextInput(attrs={
-                'class' : 'form-control', 'placeholder' : 'Your Phone'
-            }),
-            'category' : forms.ChoiceField(),
-            'message' : forms.Textarea(attrs={
-                'class' : 'form-control', 'placeholder' : 'Your Message'
-            }),
+    # widgets = {
+    #         'fullname' : forms.TextInput(attrs={
+    #             'class':'form-control', 'placeholder':'Your Name'
+    #         }),
+    #         'email' : forms.EmailInput(attrs={
+    #             'class':'form-control', 'placeholder':'Your Email'
+    #         }),
+    #         'message' : forms.Textarea(attrs={
+    #             'class':'form-control', 'placeholder':'Your Message'
+    #         }),
 
-        }
+    #     }
 
 
 class LoginForm(forms.Form):

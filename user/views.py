@@ -9,6 +9,7 @@ from django.utils.http import urlsafe_base64_decode
 from django.contrib import messages
 
 from django.contrib.auth import get_user_model, authenticate, login as django_login , logout as django_logout
+
 User = get_user_model()
 
 # Create your views here.

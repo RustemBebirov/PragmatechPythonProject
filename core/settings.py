@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'user',
     'pages',
     'shop',
+    'teacher',
+    'blog',
     'crispy_forms',
     
 ]
@@ -112,6 +114,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+    {   
+        'NAME': 'user.validators.UppercaseValidator', 
+    },
+    {   'NAME': 'user.validators.LowercaseValidator', 
+    },
+    {   'NAME': 'user.validators.SymbolValidator', 
     },
 ]
 

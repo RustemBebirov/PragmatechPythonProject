@@ -18,11 +18,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-banner-cont">
-                        <h2>Teachers</h2>
+                        <h2>{{teacher.fullname}}</h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{% url 'firstapp:index' %}">Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Teachers</li>
+                                <li class="breadcrumb-item active" aria-current="page">{{teacher.fullname}}</li>
                             </ol>
                         </nav>
                     </div> <!-- page banner cont -->
@@ -44,8 +45,8 @@
                             <img src="{{teacher.image.url}}" alt="Teachers">
                         </div>
                         <div class="name">
-                            <h6>{{teacher.full_name}}</h6>
-                            <span>{{teacher.job}}</span>
+                            <h6>{{teacher.fullname}}</h6>
+                            <span>{{info.job}}</span>
                         </div>
                         <div class="social">
                             <ul>
@@ -56,7 +57,7 @@
                             </ul>
                         </div>
                         <div class="description">
-                            <p>{{teacher.short_description}}</p>
+                            <p>{{info.short_description}}</p>
                         </div>
                     </div> <!-- teachers left -->
                 </div>
@@ -78,29 +79,30 @@
                                 <div class="dashboard-cont">
                                     <div class="single-dashboard pt-40">
                                         <h5>About</h5>
-                                        <p>{{teacher.about}}</p>
+                                        <p>{{info.about}}</p>
                                     </div> <!-- single dashboard -->
                                     <div class="single-dashboard pt-40">
                                         <h5>Acchivments</h5>
-                                        <p>{{teacher.acchivments}}</p>
+                                        <p>{{info.acchivments}}</p>
                                     </div> <!-- single dashboard -->
                                     <div class="single-dashboard pt-40">
                                         <h5>My Objective</h5>
-                                        <p>{{teacher.objective}}</p>
+                                        <p>{{info.objective}}</p>
                                     </div> <!-- single dashboard -->
                                 </div> <!-- dashboard cont -->
                             </div>
                             <div class="tab-pane fade" id="courses" role="tabpanel" aria-labelledby="courses-tab">
                                 <div class="courses-cont pt-20">
                                     <div class="row">
+                                        {% for course in courses %}
                                         <div class="col-md-6">
                                             <div class="single-course mt-30">
                                                 <div class="thum">
                                                     <div class="image">
-                                                        <img src="{{teacher.course.image.url}}" alt="Course">
+                                                        <img src="{{course.image.url}}" alt="Course">
                                                     </div>
                                                     <div class="price">
-                                                        <span>${{teacher.course.price}}</span>
+                                                        <span>${{course.price}}</span>
                                                     </div>
                                                 </div>
                                                 <div class="cont border">
@@ -112,13 +114,13 @@
                                                         <li><i class="fa fa-star"></i></li>
                                                     </ul>
                                                     <span>(20 Reviews)</span>
-                                                    <a href="#"><h4>{{teacher.course.title}</h4></a>
+                                                        <a href="{{course.get_absolute_url}}"><h4>{{course.title}}</h4></a>
                                                     <div class="course-teacher">
                                                         <div class="thum">
-                                                            <a href="#"><img src="images/course/teacher/t-2.jpg" alt="teacher"></a>
+                                                            <a href="#"><img src="{{course.user.image.url}}" alt="teacher"></a>
                                                         </div>
                                                         <div class="name">
-                                                            <a href="#"><h6>Mark anthem</h6></a>
+                                                            <a href="#"><h6>{{course.user.fullname}}</h6></a>
                                                         </div>
                                                         <div class="admin">
                                                             <ul>
@@ -130,7 +132,7 @@
                                                 </div>
                                             </div> <!-- single course -->
                                         </div>
-                                        
+                                        {% endfor %}
                                     </div> <!-- row -->
                                 </div> <!-- courses cont -->
                             </div>

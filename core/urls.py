@@ -30,6 +30,8 @@ urlpatterns = [
     path('user/', include('user.urls', namespace='user')),
     path('pages/', include('pages.urls', namespace='pages')),
     path('orders/', include('shop.urls', namespace='orders')),
+    path('teachers/', include('teacher.urls', namespace='teachers')),
+    path('blogs/', include('blog.urls', namespace='blogs')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.index_title ='Edubin'
