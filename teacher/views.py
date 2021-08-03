@@ -1,9 +1,11 @@
+from teacher.forms import CourseCategoryForm, CourseCurriculumForm, CourseForm, TeacherInfoForm
 from teacher.models import Event,Course,Course_category,Course_Comment,Curriculum,TeacherInfo,Teacher_Comment
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth import get_user_model
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 User = get_user_model()
 # Create your views here.
 
@@ -69,9 +71,67 @@ def courses_single(request,id):
     }
     return render(request, 'courses-single.html', context)
 
-
+@login_required
 def dashboard(request):
-    return render(request,'dashboard.html')
+    course = Course.objects.all()
+    context={
+        'courses':course
+    }
+    return render(request,'dashboard.html',context)
+
+
+class TeacherInfoCreateView(CreateView):
+    model = TeacherInfo
+    form_class = TeacherInfoForm
+    template_name = 'addteacherinfo.html'
+    success_url = '/teachers/dashboard'
+
+class TeacherInfoUpdateView(UpdateView):
+    model = TeacherInfo
+    form_class = TeacherInfoForm
+    template_name = 'addteacherinfo.html'
+    success_url = '/teachers/dashboard'
+    
+    queryset = TeacherInfo.objects.all()
+
+
+class CourseCategoryCreateView(CreateView):
+    model = Course_category
+    form_class = CourseCategoryForm
+    template_name = 'addcategory.html'
+    success_url = '/teachers/dashboard'
+
+class CourseCurriculumCreateView(CreateView):
+    model = Curriculum
+    form_class = CourseCurriculumForm
+    template_name = 'addcurriculum.html'
+    success_url = '/teachers/dashboard'
+
+
+class CourseCreateView(CreateView):
+    model = Course
+    form_class = CourseForm
+    template_name = 'addcourse.html'
+    success_url = '/teachers/dashboard'
+
+    # def form_valid(self, form):
+    #     obj = form.save(commit=False)
+    #     obj.teacher = self.request.user
+    #     obj.save()        
+    #     return http.HttpResponseRedirect(self.get_success_url())
+
+class CourseUpdateView(UpdateView):
+    model = Course
+    form_class = CourseForm
+    template_name = 'addcourse.html'
+    success_url = '/teachers/dashboard'
+
+class CourseDeleteView(DeleteView):
+    model = Course
+    template_name = 'delete.html'
+    success_url = '/teachers/dashboard'
+
+
 
 
 
