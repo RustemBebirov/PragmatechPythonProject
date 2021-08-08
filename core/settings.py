@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'shop',
     'teacher',
     'blog',
+    'social_django',
     'crispy_forms',
     
 ]
@@ -60,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',#google
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -75,6 +78,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                #GOOGLE
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect'
                 
             ],
         },
@@ -158,10 +165,53 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # Crispy form
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-#registration
+#registration sent email
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend" 
 EMAIL_HOST = "smtp.gmail.com" 
 EMAIL_USE_TLS = True 
 EMAIL_PORT = 587 
 EMAIL_HOST_USER = 'rustembebirov96@gmail.com' 
 EMAIL_HOST_PASSWORD = 'gtsuwonnqxbrcamr'
+
+
+#facebook login
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.google.GoogleOAuth2',
+]
+
+
+LOGIN_URL = reverse_lazy('user:login')
+LOGIN_REDIRECT_URL = reverse_lazy('firstapp:index')
+LOGOUT_URL = reverse_lazy('user:logout')
+LOGOUT_REDIRECT_URL = reverse_lazy('user:login')
+
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1155869314901109'
+SOCIAL_AUTH_FACEBOOK_SECRET = '81d2c8d9d63e66783629530d6d94a74e'
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_friends']
+
+SOCIAL_AUTH_FACEOOK_PROFILE_EXTRA_PARAMS = {
+    'fields' : 'id,name,email,picture',
+}
+
+SOCIAL_AUTH_PIPELINE = (
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.auth_allowed',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.user.get_username',
+    'social_core.pipeline.user.create_user',
+    # 'path.to.save_profile',  # <--- set the path to the function
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
+)
+
+#google
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY ='246201988071-hu74di0emdndr6qek114n7qujc7admlu.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'j6BLNezUX8Wmqz_MmxrMbnJX'

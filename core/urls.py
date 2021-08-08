@@ -32,6 +32,8 @@ urlpatterns = [
     path('orders/', include('shop.urls', namespace='orders')),
     path('teachers/', include('teacher.urls', namespace='teachers')),
     path('blogs/', include('blog.urls', namespace='blogs')),
+    path('social-auth/',include('social_django.urls',namespace='social')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.index_title ='Edubin'

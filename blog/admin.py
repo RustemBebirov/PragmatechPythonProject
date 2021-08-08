@@ -3,10 +3,8 @@ from blog.models import *
 # Register your models here.
 
 # blog model registration
-@admin.register(Blog)
-class BlogAdmin(admin.ModelAdmin):
-    prepopulated_fields = {"slug": ("title",)}
 
+admin.site.register(Blog)
 admin.site.register(Blog_comment)
 admin.site.register(Blog_category)
 admin.site.register(Tag)

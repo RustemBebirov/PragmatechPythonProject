@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.db.models.deletion import CASCADE
+from django.utils.text import slugify
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -55,6 +56,10 @@ class Blog(models.Model):
         verbose_name_plural = 'Blogs'
         ordering = ('title','-created_at')
          
+    def save(self,*args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super(Blog, self).save(*args, **kwargs)
 
     def __str__(self) -> str:
         return self.title
