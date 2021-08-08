@@ -20,6 +20,8 @@ defusedxml==0.7.1
 distro==1.4.0
 distro-info===0.23ubuntu1
 Django==3.2.4
+django-cors-headers==3.7.0
+django-cors-middleware==1.5.0
 django-crispy-forms==1.12.0
 django-jet==1.0.8
 django-jet-reboot==1.1.1

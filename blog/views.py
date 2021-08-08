@@ -44,7 +44,7 @@ def blog_single(request,slug):
     # blog = Blog.objects.get(id=id)
     blog = get_object_or_404(Blog, slug=slug)
     blog_categories = Blog_category.objects.all()
-    blog_comments = blog.comment_blog.all()
+    blog_comments = Blog_comment.objects.filter(id=blog.id).all()
     form1 = BlogCommentForm()
     form2 = BlogCommentFormReply()
 

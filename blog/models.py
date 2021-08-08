@@ -41,7 +41,7 @@ class Blog(models.Model):
     short_description = models.CharField('Short description', max_length=127 )
     description = models.TextField("Description", null=True)
     image = models.ImageField("Image", upload_to='blog_images')
-    slug = models.SlugField('Slug',max_length=160,unique_for_date='created_at')
+    slug = models.SlugField('Slug',max_length=160,unique_for_date='created_at',blank=True,null=True)
     tag = models.ManyToManyField(Tag, verbose_name='Tag',related_name='blogs')
 
     # moderation's
@@ -56,10 +56,12 @@ class Blog(models.Model):
         verbose_name_plural = 'Blogs'
         ordering = ('title','-created_at')
          
-    def save(self,*args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.title)
-        super(Blog, self).save(*args, **kwargs)
+    # def save(self,*args, **kwargs):
+    #     if not self.slug:
+    #         self.slug = slugify(self.title)
+    #     else:
+    #         self.slug = slugify(self.title)
+    #     super(Blog, self).save(*args, **kwargs)
 
     def __str__(self) -> str:
         return self.title

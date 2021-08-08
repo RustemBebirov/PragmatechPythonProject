@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'pages',
     'shop',
     'teacher',
-    'blog',
+    'blog.apps.BlogConfig',
     'social_django',
     'crispy_forms',
     
@@ -63,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',#google
+    'firstapp.middleware.BlackListMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'
